@@ -1,0 +1,19 @@
+{
+  "name": "my-recepie-finder",
+  "version": "1.0.0",
+  "description": "Help's to find food recepie ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mralimov/my-recepie-finder.git"
+  },
+  "author": "Donnie Alimov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mralimov/my-recepie-finder/issues"
+  },
+  "homepage": "https://github.com/mralimov/my-recepie-finder#readme"
+}
