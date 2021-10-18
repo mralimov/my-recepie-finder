@@ -5,11 +5,11 @@ import SearchResult from './searchResults/SearchResult';
 import Recipe from './recipe/Recipe';
 const App = () => {
   return (
-    <div className='container'>
+    <>
       <Header />
       <SearchResult />
       <Recipe />
-    </div>
+    </>
   );
 };
 

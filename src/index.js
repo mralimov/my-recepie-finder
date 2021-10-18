@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './App.scss';
 
-const appElement = document.getElementById('root');
+const appElement = document.getElementById('container');
 
 ReactDOM.render(<App />, appElement);

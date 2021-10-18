@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Fragment>
       <header className='header'>
-        <img src='src/img/logo.png' alt='Logo' className='header__logo' />
+        <img src='../img/logo.png' alt='Logo' className='header__logo' />
         <Form />
         <Nav />
       </header>
