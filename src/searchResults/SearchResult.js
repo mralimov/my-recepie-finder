@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useFetch from '../useFetch/UseFetch';
+import Loader from '../Loader';
+import RecipeList from './RecipeList';
 
-const SearchResult = () => {
+const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
+  const KEY = 'ffa960fd-e870-4fb9-b79d-f2d19c62463c';
+
+  const { get, loading } = useFetch(
+    `https://forkify-api.herokuapp.com/api/v2/recipes?`
+  );
+  useEffect(() => {
+    get(`search=${recipeName}&key=${KEY}`)
+      .then((data) => setRecipeData(data.data.recipes))
+      .catch((err) => console.log(err));
+  }, [recipeName]);
+
+  console.log(recipeData);
   return (
     <div className='search-results'>
       <ul className='results'>
-        {/* <!-- 
-          <li className="preview">
-            <a className="preview__link preview__link--active" href="#23456">
-              <figure className="preview__fig">
-                <img src="src/img/test-1.jpg" alt="Test" />
-              </figure>
-              <div className="preview__data">
-                <h4 className="preview__title">Pasta with Tomato Cream ...</h4>
-                <p className="preview__publisher">The Pioneer Woman</p>
-                <div className="preview__user-generated">
-                  <svg>
-                    <use href="src/img/icons.svg#icon-user"></use>
-                  </svg>
-                </div>
-              </div>
-            </a>
-          </li>
+        {loading && <Loader />}
+        {/* <!--  ffa960fd-e870-4fb9-b79d-f2d19c62463c
+       
            --> */}
+        {recipeData.map((recipe) => {
+          return <RecipeList key={recipe.id} recipe={recipe} />;
+        })}
       </ul>
 
       <div className='pagination'>
