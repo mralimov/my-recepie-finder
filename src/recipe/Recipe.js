@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Recipe = () => {
+const Recipe = ({ recipe }) => {
   return (
-    <div class='recipe'>
-      <div class='message'>
+    <div className='recipe'>
+      <div className='message'>
         <div>
           <svg>
             <use href='src/img/icons.svg#icon-smile'></use>
