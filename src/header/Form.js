@@ -13,7 +13,7 @@ const Form = ({ recipeName, setRecipeName }) => {
     setRecipeInput('');
   };
   return (
-    <form className='search' onClick={recipeSubmitHandler}>
+    <form className='search' onSubmit={recipeSubmitHandler}>
       <input
         value={recipeInput}
         type='text'
