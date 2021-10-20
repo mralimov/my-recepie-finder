@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useFetch from '../useFetch/UseFetch';
 import Loader from '../Loader';
 import RecipeList from './RecipeList';
+import PaginationButton from './PaginationButton';
 
 const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,30 +37,11 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
         })}
       </ul>
 
-      <div className='pagination'>
-        {currentPage > 1 && (
-          <button
-            className='btn--inline pagination__btn--prev'
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            <svg className='search__icon'>
-              <use href='src/img/icons.svg#icon-arrow-left'></use>
-            </svg>
-            <span>Page {currentPage}</span>
-          </button>
-        )}
-        {currentPage < maxPages && (
-          <button
-            className='btn--inline pagination__btn--next'
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            <span>Page {currentPage + 1}</span>
-            <svg className='search__icon'>
-              <use href='src/img/icons.svg#icon-arrow-right'></use>
-            </svg>
-          </button>
-        )}
-      </div>
+      <PaginationButton
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        maxPages={maxPages}
+      />
 
       <p className='copyright'>
         &copy; Copyright by Donnie Alimov
