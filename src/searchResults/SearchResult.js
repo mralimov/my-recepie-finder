@@ -5,15 +5,14 @@ import RecipeList from './RecipeList';
 
 const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [arrayLength, setArrayLength] = useState(0);
+
   const KEY = 'ffa960fd-e870-4fb9-b79d-f2d19c62463c';
 
-  // const getTenRecipies = (data, page) => {
-  //   const start = (page - 1) * 10;
-  //   const end = page * 10;
-  //   return setRecipeData(data.slice(start, end));
-  // };
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
+  let maxPages = Math.ceil(arrayLength / 10);
+  console.log(maxPages);
   console.log(start, end);
   const { get, loading } = useFetch(
     `https://forkify-api.herokuapp.com/api/v2/recipes?`
@@ -23,6 +22,7 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
     get(`search=${recipeName}&key=${KEY}`)
       .then((data) => {
         const { recipes } = data.data;
+        setArrayLength(recipes.length);
         setRecipeData(recipes.slice(start, end));
         // console.log(data.data.recipes);
       })
@@ -42,7 +42,7 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
       </ul>
 
       <div className='pagination'>
-        {currentPage > 0 && (
+        {currentPage > 1 && (
           <button
             className='btn--inline pagination__btn--prev'
             onClick={() => setCurrentPage(currentPage - 1)}
@@ -53,15 +53,17 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
             <span>Page {currentPage}</span>
           </button>
         )}
-        <button
-          className='btn--inline pagination__btn--next'
-          onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          <span>Page {currentPage + 2}</span>
-          <svg className='search__icon'>
-            <use href='src/img/icons.svg#icon-arrow-right'></use>
-          </svg>
-        </button>
+        {currentPage < maxPages && (
+          <button
+            className='btn--inline pagination__btn--next'
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            <span>Page {currentPage + 1}</span>
+            <svg className='search__icon'>
+              <use href='src/img/icons.svg#icon-arrow-right'></use>
+            </svg>
+          </button>
+        )}
       </div>
 
       <p className='copyright'>
