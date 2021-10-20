@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import Icons from '../img/icons.svg';
 
-const RecipeList = ({ recipe }) => {
+const RecipeList = ({ recipe, setCurrentRecipe }) => {
   const { image_url, publisher, title, id } = recipe;
+
+  const recipeClickHandler = () => {
+    setCurrentRecipe(id);
+  };
 
   return (
     <>
-      <li className='preview' key={id}>
+      <li className='preview' key={id} onClick={recipeClickHandler}>
         <a className='preview__link preview__link--active' href='#23456'>
           <figure className='preview__fig'>
             <img src={image_url} alt='Test' />
