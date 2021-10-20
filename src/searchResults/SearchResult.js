@@ -4,7 +4,7 @@ import Loader from '../Loader';
 import RecipeList from './RecipeList';
 
 const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const KEY = 'ffa960fd-e870-4fb9-b79d-f2d19c62463c';
 
   // const getTenRecipies = (data, page) => {
@@ -14,7 +14,7 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
   // };
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
-
+  console.log(start, end);
   const { get, loading } = useFetch(
     `https://forkify-api.herokuapp.com/api/v2/recipes?`
   );
@@ -22,22 +22,23 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
   useEffect(() => {
     get(`search=${recipeName}&key=${KEY}`)
       .then((data) => {
-        setRecipeData([data.data.recipes]);
-        console.log(data.data.recipes);
+        const { recipes } = data.data;
+        setRecipeData(recipes.slice(start, end));
+        // console.log(data.data.recipes);
       })
       .catch((err) => console.log(err));
   }, [recipeName, currentPage]);
 
-  // if (!recipeData) return;
-  // console.log(recipeData);
+  console.log(recipeData);
+
   return (
     <div className='search-results'>
       <ul className='results'>
         {loading && <Loader />}
-        {/* {recipeData.map((recipe) => {
+        {recipeData.map((recipe) => {
           return <RecipeList key={recipe.id} recipe={recipe} />;
-        })} */}
-        {<RecipeList recipes={recipeData} currentPage={currentPage} />}
+        })}
+        {/* {<RecipeList recipes={recipeData} currentPage={currentPage} />} */}
       </ul>
 
       <div className='pagination'>

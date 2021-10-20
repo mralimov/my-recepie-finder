@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import RecipeListDetails from './RecipeListDetails';
-const RecipeList = ({ recipes, currentPage }) => {
-  const [tenRecipes, setTenRecipes] = useState(null);
-  let start = (currentPage - 1) * 10;
-  let end = currentPage * 10;
-  //   function getTenRecipies(data, page) {
-  //     const start = (page - 1) * 10;
-  //     const end = page * 10;
-  //     return setTenRecipes(data.slice(start, end));
-  //   }
-  //   if (recipes) return getTenRecipies(recipes, currentPage);
-  //   console.log(recipes.slice(start, end));
+import Icons from '../img/icons.svg';
+
+const RecipeList = ({ recipe }) => {
+  const { image_url, publisher, title, id } = recipe;
+
   return (
     <>
-      {recipes.map((recipe) => {
-        return <RecipeListDetails key={recipe.id} recipe={recipe} />;
-      })}
+      <li className='preview' key={id}>
+        <a className='preview__link preview__link--active' href='#23456'>
+          <figure className='preview__fig'>
+            <img src={image_url} alt='Test' />
+          </figure>
+          <div className='preview__data'>
+            <h4 className='preview__title'>{title}</h4>
+            <p className='preview__publisher'>{publisher}</p>
+            <div className='preview__user-generated'>
+              <svg>
+                <use xlinkHref={`${Icons}#icon-user`}></use>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
     </>
   );
 };
