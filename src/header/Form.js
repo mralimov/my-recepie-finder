@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import Icons from '../img/icons.svg';
 
 const Form = ({ recipeName, setRecipeName }) => {
   const [recipeInput, setRecipeInput] = useState('');
+
   const recipeInputHnadler = (e) => {
     setRecipeInput(e.target.value);
   };
@@ -23,7 +25,7 @@ const Form = ({ recipeName, setRecipeName }) => {
       />
       <button className='btn search__btn'>
         <svg className='search__icon'>
-          <use href='../img/icons.svg#icon-search'></use>
+          <use href={Icons + '#icon-search'}></use>
         </svg>
         <span>Search</span>
       </button>

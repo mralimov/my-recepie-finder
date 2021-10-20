@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import Icons from '../img/icons.svg';
 const Nav = () => {
   return (
     <nav className='nav'>
@@ -7,7 +7,7 @@ const Nav = () => {
         <li className='nav__item'>
           <button className='nav__btn nav__btn--add-recipe'>
             <svg className='nav__icon'>
-              <use href='../img/icons.svg#icon-edit'></use>
+              <use href={Icons + '#icon-edit'}></use>
             </svg>
             <span>Add recipe</span>
           </button>
@@ -15,7 +15,7 @@ const Nav = () => {
         <li className='nav__item'>
           <button className='nav__btn nav__btn--bookmarks'>
             <svg className='nav__icon'>
-              <use href='../img/icons.svg#icon-bookmark'></use>
+              <use href={Icons + '#icon-bookmark'}></use>
             </svg>
             <span>Bookmarks</span>
           </button>
@@ -24,7 +24,7 @@ const Nav = () => {
               <div className='message'>
                 <div>
                   <svg>
-                    <use href='../img/icons.svg#icon-smile'></use>
+                    <use href={Icons + '#icon-smile'}></use>
                   </svg>
                 </div>
                 <p>No bookmarks yet. Find a nice recipe and bookmark it :)</p>
