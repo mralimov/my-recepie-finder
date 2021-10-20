@@ -7,7 +7,7 @@ import Recipe from './recipe/Recipe';
 const App = () => {
   const [recipeName, setRecipeName] = useState('');
   const [recipeData, setRecipeData] = useState([]);
-
+  const [currentRecipe, setCurrentRecipe] = useState('');
   return (
     <>
       <Header recipeName={recipeName} setRecipeName={setRecipeName} />
@@ -15,8 +15,9 @@ const App = () => {
         recipeName={recipeName}
         recipeData={recipeData}
         setRecipeData={setRecipeData}
+        setCurrentRecipe={setCurrentRecipe}
       />
-      <Recipe recipe={recipeData} />
+      <Recipe recipe={recipeData} currentRecipe={currentRecipe} />
     </>
   );
 };
