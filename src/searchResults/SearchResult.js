@@ -3,23 +3,25 @@ import useFetch from '../useFetch/UseFetch';
 import Loader from '../Loader';
 import RecipeList from './RecipeList';
 import PaginationButton from './PaginationButton';
+import { KEY, BASE_URL } from '../config';
 
-const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
+const SearchResult = ({
+  recipeName,
+  recipeData,
+  setRecipeData,
+  setCurrentRecipe,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [arrayLength, setArrayLength] = useState(0);
-
-  const KEY = 'ffa960fd-e870-4fb9-b79d-f2d19c62463c';
 
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
   let maxPages = Math.ceil(arrayLength / 10);
 
-  const { get, loading } = useFetch(
-    `https://forkify-api.herokuapp.com/api/v2/recipes?`
-  );
+  const { get, loading } = useFetch(BASE_URL);
 
   useEffect(() => {
-    get(`search=${recipeName}&key=${KEY}`)
+    get(`?search=${recipeName}&key=${KEY}`)
       .then((data) => {
         const { recipes } = data.data;
         setArrayLength(recipes.length);
@@ -30,10 +32,17 @@ const SearchResult = ({ recipeName, recipeData, setRecipeData }) => {
 
   return (
     <div className='search-results'>
+      {loading && <Loader />}
+
       <ul className='results'>
-        {loading && <Loader />}
         {recipeData.map((recipe) => {
-          return <RecipeList key={recipe.id} recipe={recipe} />;
+          return (
+            <RecipeList
+              key={recipe.id}
+              recipe={recipe}
+              setCurrentRecipe={setCurrentRecipe}
+            />
+          );
         })}
       </ul>
 
