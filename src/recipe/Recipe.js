@@ -3,6 +3,7 @@ import useFetch from '../useFetch/UseFetch';
 import { BASE_URL, KEY } from '../config';
 import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
+import Loader from '../Loader';
 
 const Recipe = ({ currentRecipe }) => {
   const { get, loading } = useFetch(BASE_URL);
@@ -24,14 +25,14 @@ const Recipe = ({ currentRecipe }) => {
     id,
     image_url,
     cooking_time,
-    ingredients,
+    ingredients = [],
     publisher,
     servings,
     source_url,
     title,
   } = recipeData;
 
-  console.log(id, image_url);
+  console.log(id, image_url, cooking_time, ingredients, publisher, servings);
   return (
     <>
       <div className='recipe'>
@@ -60,7 +61,6 @@ const Recipe = ({ currentRecipe }) => {
             </div>
             <p>No recipes found for your query. Please try again!</p>
       </div> -->*/}
-
         {recipeClicked && (
           <>
             <figure className='recipe__fig'>
@@ -77,7 +77,7 @@ const Recipe = ({ currentRecipe }) => {
                 <span className='recipe__info-data recipe__info-data--minutes'>
                   {cooking_time}
                 </span>
-                <span className='recipe__info-text'>{cooking_time}</span>
+                <span className='recipe__info-text'>minutes</span>
               </div>
               <div className='recipe__info'>
                 <svg className='recipe__info-icon'>
@@ -86,7 +86,7 @@ const Recipe = ({ currentRecipe }) => {
                 <span className='recipe__info-data recipe__info-data--people'>
                   {servings}
                 </span>
-                <span className='recipe__info-text'>{servings}</span>
+                <span className='recipe__info-text'>servings</span>
 
                 <div className='recipe__info-buttons'>
                   <button className='btn--tiny btn--increase-servings'>
@@ -113,10 +113,7 @@ const Recipe = ({ currentRecipe }) => {
                 </svg>
               </button>
             </div>
-            {ingredients &&
-              ingredients.map((ingredient) => {
-                <RecipeIngredients key={title} ingredient={ingredient} />;
-              })}
+            <RecipeIngredients key={title} ingredients={ingredients} />;
             <div className='recipe__directions'>
               <h2 className='heading--2'>How to cook it</h2>
               <p className='recipe__directions-text'>
