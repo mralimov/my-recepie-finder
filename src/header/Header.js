@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Form from './Form';
 import Nav from './Nav';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 
 const Header = ({ recipeName, setRecipeName }) => {
   return (
