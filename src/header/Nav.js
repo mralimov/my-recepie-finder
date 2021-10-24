@@ -1,31 +1,31 @@
 import React, { Fragment } from 'react';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 const Nav = () => {
   return (
     <nav className='nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
           <button className='nav__btn nav__btn--add-recipe'>
-            <svg className='nav__icon'>
+            {/* <svg className='nav__icon'>
               <use href={Icons + '#icon-edit'}></use>
-            </svg>
+            </svg> */}
             <span>Add recipe</span>
           </button>
         </li>
         <li className='nav__item'>
           <button className='nav__btn nav__btn--bookmarks'>
-            <svg className='nav__icon'>
+            {/* <svg className='nav__icon'>
               <use href={Icons + '#icon-bookmark'}></use>
-            </svg>
+            </svg> */}
             <span>Bookmarks</span>
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
               <div className='message'>
                 <div>
-                  <svg>
+                  {/* <svg>
                     <use href={Icons + '#icon-smile'}></use>
-                  </svg>
+                  </svg> */}
                 </div>
                 <p>No bookmarks yet. Find a nice recipe and bookmark it :)</p>
               </div>
