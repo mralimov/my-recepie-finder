@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from '../useFetch/UseFetch';
 import { BASE_URL, KEY } from '../config';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
 import Loader from '../Loader';
 
@@ -39,9 +39,9 @@ const Recipe = ({ currentRecipe }) => {
         {!recipeClicked && (
           <div className='message'>
             <div>
-              <svg>
+              {/* <svg>
                 <use href={Icons + '#icon-smile'}></use>
-              </svg>
+              </svg> */}
             </div>
             <p>Start by searching for a recipe or an ingredient. Have fun!</p>
           </div>
@@ -71,18 +71,18 @@ const Recipe = ({ currentRecipe }) => {
             </figure>
             <div className='recipe__details'>
               <div className='recipe__info'>
-                <svg className='recipe__info-icon'>
+                {/* <svg className='recipe__info-icon'>
                   <use href={Icons + '#icon-clock'}></use>
-                </svg>
+                </svg> */}
                 <span className='recipe__info-data recipe__info-data--minutes'>
                   {cooking_time}
                 </span>
                 <span className='recipe__info-text'>minutes</span>
               </div>
               <div className='recipe__info'>
-                <svg className='recipe__info-icon'>
+                {/* <svg className='recipe__info-icon'>
                   <use href={Icons + '#icon-users'}></use>
-                </svg>
+                </svg> */}
                 <span className='recipe__info-data recipe__info-data--people'>
                   {servings}
                 </span>
@@ -90,27 +90,27 @@ const Recipe = ({ currentRecipe }) => {
 
                 <div className='recipe__info-buttons'>
                   <button className='btn--tiny btn--increase-servings'>
-                    <svg>
+                    {/* <svg>
                       <use href={Icons + '#icon-minus-circle'}></use>
-                    </svg>
+                    </svg> */}
                   </button>
                   <button className='btn--tiny btn--increase-servings'>
-                    <svg>
+                    {/* <svg>
                       <use href={Icons + '#icon-plus-circle'}></use>
-                    </svg>
+                    </svg> */}
                   </button>
                 </div>
               </div>
 
               <div className='recipe__user-generated'>
-                <svg>
+                {/* <svg>
                   <use href={Icons + '#icon-user'}></use>
-                </svg>
+                </svg> */}
               </div>
               <button className='btn--round'>
-                <svg className=''>
+                {/* <svg className=''>
                   <use href={Icons + '#icon-bookmark-fill'}></use>
-                </svg>
+                </svg> */}
               </button>
             </div>
             <RecipeIngredients key={title} ingredients={ingredients} />;
@@ -127,9 +127,9 @@ const Recipe = ({ currentRecipe }) => {
                 target='_blank'
               >
                 <span>Directions</span>
-                <svg className='search__icon'>
+                {/* <svg className='search__icon'>
                   <use href={Icons + '#icon-arrow-right'}></use>
-                </svg>
+                </svg> */}
               </a>
             </div>{' '}
           </>
