@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 const RecipeIngredients = ({ ingredients, key }) => {
   return (
     <div class='recipe__ingredients'>
@@ -10,9 +10,9 @@ const RecipeIngredients = ({ ingredients, key }) => {
 
           return (
             <li key={key} class='recipe__ingredient'>
-              <svg class='recipe__icon'>
+              {/* <svg class='recipe__icon'>
                 <use href={Icons + '#icon-check'}></use>
-              </svg>
+              </svg> */}
               <div class='recipe__quantity'>{quantity}</div>
               <div class='recipe__description'>
                 <span class='recipe__unit'>{unit}</span>
