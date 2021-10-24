@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 
 const RecipeList = ({ recipe, setCurrentRecipe }) => {
   const { image_url, publisher, title, id } = recipe;
@@ -19,9 +19,9 @@ const RecipeList = ({ recipe, setCurrentRecipe }) => {
             <h4 className='preview__title'>{title}</h4>
             <p className='preview__publisher'>{publisher}</p>
             <div className='preview__user-generated'>
-              <svg>
+              {/* <svg>
                 <use xlinkHref={`${Icons}#icon-user`}></use>
-              </svg>
+              </svg> */}
             </div>
           </div>
         </a>
