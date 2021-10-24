@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from '../img/icons.svg';
+// import Icons from '../img/icons.svg';
 
 const PaginationButton = ({ currentPage, maxPages, setCurrentPage }) => {
   return (
@@ -9,9 +9,9 @@ const PaginationButton = ({ currentPage, maxPages, setCurrentPage }) => {
           className='btn--inline pagination__btn--prev'
           onClick={() => setCurrentPage(currentPage - 1)}
         >
-          <svg className='search__icon'>
+          {/* <svg className='search__icon'>
             <use href={Icons + '#icon-arrow-left'}></use>
-          </svg>
+          </svg> */}
           <span>Page {currentPage}</span>
         </button>
       )}
@@ -21,9 +21,9 @@ const PaginationButton = ({ currentPage, maxPages, setCurrentPage }) => {
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           <span>Page {currentPage + 1}</span>
-          <svg className='search__icon'>
+          {/* <svg className='search__icon'>
             <use href={Icons + '#icon-arrow-right'}></use>
-          </svg>
+          </svg> */}
         </button>
       )}
     </div>
