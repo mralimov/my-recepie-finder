@@ -23,16 +23,6 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
-      {
-        test: /\.svg/,
-        use: {
-          loader: 'svg-url-loader',
-          options: {
-            // make all svg images to work in IE
-            iesafe: true,
-          },
-        },
-      },
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
