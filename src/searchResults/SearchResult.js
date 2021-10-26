@@ -25,17 +25,18 @@ const SearchResult = ({
       .then((data) => {
         const { recipes } = data.data;
         setArrayLength(recipes.length);
-        setRecipeData(recipes.slice(start, end));
+        setRecipeData(recipes);
       })
       .catch((err) => console.log(err));
-  }, [recipeName, currentPage]);
+    setCurrentPage(1);
+  }, [recipeName]);
 
   return (
     <div className='search-results'>
       {loading && <Loader />}
 
       <ul className='results'>
-        {recipeData.map((recipe) => {
+        {recipeData.slice(start, end).map((recipe) => {
           return (
             <RecipeList
               key={recipe.id}
