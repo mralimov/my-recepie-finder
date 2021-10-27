@@ -5,10 +5,11 @@ import { BASE_URL, KEY } from '../config';
 import RecipeIngredients from './RecipeIngredients';
 import Loader from '../Loader';
 
-const Recipe = ({ currentRecipe, setBookmark }) => {
+const Recipe = ({ currentRecipe, setBookmark, bookmark }) => {
   const { get, loading } = useFetch(BASE_URL);
   const [recipeData, setRecipeData] = useState([]);
   const [recipeClicked, setRecipeClicked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
 
   useEffect(() => {
     get(`/${currentRecipe}?key=${KEY}`)
@@ -22,7 +23,13 @@ const Recipe = ({ currentRecipe, setBookmark }) => {
   }, [currentRecipe]);
 
   const bookmarkHandler = () => {
-    setBookmark((prevValue) => [...prevValue, currentRecipe]);
+    if (bookmark && !bookmark.includes(currentRecipe)) {
+      setBookmark((prevValue) => [...prevValue, currentRecipe]);
+      setBookmark(true);
+    } else {
+      setBookmark(bookmark.filter((item) => item !== currentRecipe));
+      setBookmark(false);
+    }
     console.log(typeof currentRecipe);
   };
 
