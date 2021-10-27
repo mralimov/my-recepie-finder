@@ -10,8 +10,6 @@ const App = () => {
   const [currentRecipe, setCurrentRecipe] = useState('');
   const [bookmark, setBookmark] = useState([]);
 
-  console.log(bookmark);
-
   return (
     <>
       <Header
@@ -30,6 +28,7 @@ const App = () => {
         recipe={recipeData}
         currentRecipe={currentRecipe}
         setBookmark={setBookmark}
+        bookmark={bookmark}
       />
     </>
   );

@@ -21,8 +21,7 @@ const Nav = ({ recipeData, bookmark }) => {
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
-
-              {bookmark && (
+              {bookmark.length == 0 && (
                 <div className='message'>
                   <div>
                     {/* <svg>
