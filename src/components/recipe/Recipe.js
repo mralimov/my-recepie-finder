@@ -5,7 +5,7 @@ import { BASE_URL, KEY } from '../config';
 import RecipeIngredients from './RecipeIngredients';
 import Loader from '../Loader';
 
-const Recipe = ({ currentRecipe, setBookmark, bookmark }) => {
+const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   const { get, loading } = useFetch(BASE_URL);
   const [recipeData, setRecipeData] = useState([]);
   const [recipeClicked, setRecipeClicked] = useState(false);
@@ -23,14 +23,29 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark }) => {
   }, [currentRecipe]);
 
   const bookmarkHandler = () => {
-    if (bookmark && !bookmark.includes(currentRecipe)) {
-      setBookmark((prevValue) => [...prevValue, currentRecipe]);
-      setBookmark(true);
-    } else {
+    // if (!bookmark.includes(currentRecipe)) {
+    //   const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+    //   console.log(bookmarkData);
+    //   setBookmark((prevValue) => [...prevValue, currentRecipe]);
+    //   setBookmark(true);
+    // } else {
+    //   setBookmark(bookmark.filter((item) => item !== currentRecipe));
+    //   setBookmark(false);
+    // }
+    // console.log(typeof currentRecipe);
+
+    if (bookmark.includes(currentRecipe)) {
       setBookmark(bookmark.filter((item) => item !== currentRecipe));
       setBookmark(false);
+    }else if (!bookmark) {
+      setBookmark(currentRecipe)
+    } else {
+      // const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+      // console.log(bookmarkData);
+      setBookmark([...bookmark, currentRecipe]);
+      setBookmark(true);
+      console.log(bookmark);
     }
-    console.log(typeof currentRecipe);
   };
 
   const {
