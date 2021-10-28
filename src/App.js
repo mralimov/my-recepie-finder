@@ -29,6 +29,7 @@ const App = () => {
         currentRecipe={currentRecipe}
         setBookmark={setBookmark}
         bookmark={bookmark}
+        recipe={recipeData}
       />
     </>
   );
