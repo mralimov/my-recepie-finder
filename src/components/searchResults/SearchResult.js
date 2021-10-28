@@ -26,6 +26,7 @@ const SearchResult = ({
         const { recipes } = data.data;
         setArrayLength(recipes.length);
         setRecipeData(recipes);
+        console.log(recipes);
       })
       .catch((err) => console.log(err));
     setCurrentPage(1);
