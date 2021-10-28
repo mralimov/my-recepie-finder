@@ -31,6 +31,14 @@ const Nav = ({ recipeData, bookmark }) => {
                   <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
                 </div>
               )}
+              {/* {bookmark.length > 0 &&
+                bookmark.forEach((id) => {
+                  const bookmarkedData = recipeData.filter((item) => {
+                    console.log(item.id === id);
+                    item.id === id;
+                  });
+                  // console.log(bookmarkedData);
+                })} */}
 
               {/* <li className="preview">
                     <a className="preview__link" href="#23456">
