@@ -14,7 +14,7 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   useEffect(() => {
     get(`/${currentRecipe}?key=${KEY}`)
       .then((data) => {
-        console.log(data.data.recipe);
+        // console.log(data.data.recipe);
         const { recipe } = data.data;
         setRecipeData(recipe);
         setRecipeClicked(true);
@@ -23,29 +23,41 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   }, [currentRecipe]);
 
   const bookmarkHandler = () => {
-    if (!bookmark.includes(currentRecipe)) {
-      const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
-      console.log(bookmarkData);
-      setBookmark((prevValue) => [...prevValue, currentRecipe]);
-      setBookmark(true);
+    const checkRecipe =
+      bookmark.filter((item) => item.id === currentRecipe).length <= 0;
+    // console.log(checkRecipe);
+    if (checkRecipe) {
+      // console.log(recipe);
+      let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+      // console.log(bookmarkData[0]);
+      let newObj = bookmark.concat(bookmarkData);
+      // console.log(newObj);
+      setBookmark(newObj);
+      setBookmarked(true);
+      // console.log(bookmark);
     } else {
-      setBookmark(bookmark.filter((item) => item !== currentRecipe));
-      setBookmark(false);
+      const filterBookmark = bookmark.filter(
+        (item) => item.id !== currentRecipe
+      );
+      setBookmark(filterBookmark);
+      setBookmarked(false);
     }
-    console.log(typeof currentRecipe);
+    console.log(bookmark);
 
-    if (bookmark.includes(currentRecipe)) {
-      setBookmark(bookmark.filter((item) => item !== currentRecipe));
-      setBookmark(false);
-    } else if (!bookmark) {
-      setBookmark(currentRecipe);
-    } else {
-      // const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
-      // console.log(bookmarkData);
-      setBookmark([...bookmark, currentRecipe]);
-      setBookmark(true);
-      console.log(bookmark);
-    }
+    // console.log(currentRecipe);
+
+    // if (bookmark.includes(currentRecipe)) {
+    //   setBookmark(bookmark.filter((item) => item !== currentRecipe));
+    //   setBookmark(false);
+    // } else if (!bookmark) {
+    //   setBookmark(currentRecipe);
+    // } else {
+    //   // const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+    //   // console.log(bookmarkData);
+    //   setBookmark([...bookmark, currentRecipe]);
+    //   setBookmark(true);
+    //   console.log(bookmark);
+    // }
   };
 
   const {
@@ -59,7 +71,7 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
     title,
   } = recipeData;
 
-  console.log(id, image_url, cooking_time, ingredients, publisher, servings);
+  // console.log(id, image_url, cooking_time, ingredients, publisher, servings);
   return (
     <>
       <div className='recipe'>
