@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import BookmarkedRecipes from './BookmarkedRecipes';
 // import Icons from '../img/icons.svg';
 const Nav = ({ recipeData, bookmark }) => {
   return (
@@ -31,12 +32,14 @@ const Nav = ({ recipeData, bookmark }) => {
                   <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
                 </div>
               )}
-              {/* {bookmark.length > 0 &&
-                bookmark.forEach((id) => {
-                  const bookmarkedData = recipeData.filter((item) => {
-                    console.log(item.id === id);
-                    item.id === id;
-                  });
+
+              {/* {bookmark &&
+                bookmark.map((recipe) => {
+                  console.log(recipe);
+                  <BookmarkedRecipes
+                    key={recipe.id + Math.floor(Math.random() * 100)}
+                    bookmarkedRecipe={recipe}
+                  />;
                   // console.log(bookmarkedData);
                 })} */}
 
