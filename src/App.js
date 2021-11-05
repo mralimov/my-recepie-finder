@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Header from './components/header/Header';
 import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
 import Recipe from './components/recipe/Recipe';
+
+const RecipeContext = createContext()
 
 const App = () => {
   const [recipeName, setRecipeName] = useState('');
