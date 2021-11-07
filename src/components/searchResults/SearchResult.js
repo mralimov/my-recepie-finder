@@ -10,6 +10,7 @@ const SearchResult = ({
   recipeData,
   setRecipeData,
   setCurrentRecipe,
+  currentRecipe,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [arrayLength, setArrayLength] = useState(0);
@@ -40,9 +41,10 @@ const SearchResult = ({
         {recipeData.slice(start, end).map((recipe) => {
           return (
             <RecipeList
-              key={recipe.id}
+              key={recipe.id + Math.floor(Math.random() * 222)}
               recipe={recipe}
               setCurrentRecipe={setCurrentRecipe}
+              currentRecipe={currentRecipe}
             />
           );
         })}

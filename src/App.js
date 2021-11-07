@@ -4,12 +4,12 @@ import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
 import Recipe from './components/recipe/Recipe';
 
-const RecipeContext = createContext()
+const RecipeContext = createContext();
 
 const App = () => {
   const [recipeName, setRecipeName] = useState('');
   const [recipeData, setRecipeData] = useState([]);
-  const [currentRecipe, setCurrentRecipe] = useState('');
+  const [currentRecipe, setCurrentRecipe] = useState('empty');
   const [bookmark, setBookmark] = useState([]);
 
   return (
@@ -25,6 +25,7 @@ const App = () => {
         recipeData={recipeData}
         setRecipeData={setRecipeData}
         setCurrentRecipe={setCurrentRecipe}
+        currentRecipe={currentRecipe}
       />
       <Recipe
         recipe={recipeData}
