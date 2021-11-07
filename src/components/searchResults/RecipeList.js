@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 // import Icons from '../img/icons.svg';
 
-const RecipeList = ({ recipe, setCurrentRecipe }) => {
+const RecipeList = ({ recipe, currentRecipe, setCurrentRecipe }) => {
   const { image_url, publisher, title, id } = recipe;
 
   const recipeClickHandler = () => {
-    setCurrentRecipe(id);
+    setCurrentRecipe((prevData) => (prevData = id));
+    console.log(currentRecipe);
   };
 
   return (

@@ -33,15 +33,15 @@ const Nav = ({ recipeData, bookmark }) => {
                 </div>
               )}
 
-              {/* {bookmark &&
+              {bookmark &&
                 bookmark.map((recipe) => {
                   console.log(recipe);
                   <BookmarkedRecipes
-                    key={recipe.id + Math.floor(Math.random() * 100)}
+                    key={recipe.id + Math.floor(Math.random() * 111)}
                     bookmarkedRecipe={recipe}
                   />;
                   // console.log(bookmarkedData);
-                })} */}
+                })}
 
               {/* <li className="preview">
                     <a className="preview__link" href="#23456">
