@@ -23,16 +23,20 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   }, [currentRecipe]);
 
   const bookmarkHandler = () => {
-    const checkRecipe =
+    let checkRecipe =
       bookmark.filter((item) => item.id === currentRecipe).length <= 0;
+
     let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
 
     if (checkRecipe) {
       setBookmark((prevData) => [...prevData, ...bookmarkData]);
+
       setBookmarked(true);
     } else {
       let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
+
       setBookmark([...filterBookmark]);
+
       setBookmarked(false);
     }
   };
