@@ -25,39 +25,16 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   const bookmarkHandler = () => {
     const checkRecipe =
       bookmark.filter((item) => item.id === currentRecipe).length <= 0;
-    // console.log(currentRecipe);
-    // console.log(recipe);
     let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
-    // console.log(bookmarkData[0]);
-    // let newObj = bookmark.concat(bookmarkData);
-    // console.log(bookmarkData);
 
-    // console.log(newObj);
     if (checkRecipe) {
       setBookmark((prevData) => [...prevData, ...bookmarkData]);
       setBookmarked(true);
-      // console.log(bookmark);
     } else {
       let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
       setBookmark([...filterBookmark]);
       setBookmarked(false);
     }
-    // console.log(bookmark);
-
-    // console.log(currentRecipe);
-
-    // if (bookmark.includes(currentRecipe)) {
-    //   setBookmark(bookmark.filter((item) => item !== currentRecipe));
-    //   setBookmark(false);
-    // } else if (!bookmark) {
-    //   setBookmark(currentRecipe);
-    // } else {
-    //   // const bookmarkData = recipe.filter((item) => item.id === currentRecipe);
-    //   // console.log(bookmarkData);
-    //   setBookmark([...bookmark, currentRecipe]);
-    //   setBookmark(true);
-    //   console.log(bookmark);
-    // }
   };
 
   const {
