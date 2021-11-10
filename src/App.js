@@ -1,40 +1,17 @@
-import React, { useState, createContext } from 'react';
+import React from 'react';
 import Header from './components/header/Header';
 import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
 import Recipe from './components/recipe/Recipe';
-
-const RecipeContext = createContext();
+import StateProvider from './components/state-context/StateProvider';
 
 const App = () => {
-  const [recipeName, setRecipeName] = useState('');
-  const [recipeData, setRecipeData] = useState([]);
-  const [currentRecipe, setCurrentRecipe] = useState('empty');
-  const [bookmark, setBookmark] = useState([]);
-
   return (
-    <>
-      <Header
-        recipeData={recipeData}
-        bookmark={bookmark}
-        recipeName={recipeName}
-        setRecipeName={setRecipeName}
-      />
-      <SearchResult
-        recipeName={recipeName}
-        recipeData={recipeData}
-        setRecipeData={setRecipeData}
-        setCurrentRecipe={setCurrentRecipe}
-        currentRecipe={currentRecipe}
-      />
-      <Recipe
-        recipe={recipeData}
-        currentRecipe={currentRecipe}
-        setBookmark={setBookmark}
-        bookmark={bookmark}
-        recipe={recipeData}
-      />
-    </>
+    <StateProvider>
+      <Header />
+      <SearchResult />
+      <Recipe />
+    </StateProvider>
   );
 };
 
