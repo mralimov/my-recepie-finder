@@ -11,36 +11,6 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
   const [recipeClicked, setRecipeClicked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
 
-  useEffect(() => {
-    get(`/${currentRecipe}?key=${KEY}`)
-      .then((data) => {
-        // console.log(data.data.recipe);
-        const { recipe } = data.data;
-        setRecipeData(recipe);
-        setRecipeClicked(true);
-      })
-      .catch((err) => console.log(err));
-  }, [currentRecipe]);
-
-  const bookmarkHandler = () => {
-    let checkRecipe =
-      bookmark.filter((item) => item.id === currentRecipe).length <= 0;
-
-    let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
-
-    if (checkRecipe) {
-      setBookmark((prevData) => [...prevData, ...bookmarkData]);
-
-      setBookmarked(true);
-    } else {
-      let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
-
-      setBookmark([...filterBookmark]);
-
-      setBookmarked(false);
-    }
-  };
-
   const {
     id,
     image_url,

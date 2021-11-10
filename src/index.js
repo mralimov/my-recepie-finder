@@ -3,7 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './App.scss';
+import { StateContextProvider } from './components/state-context/state-context';
 
 const appElement = document.getElementById('container');
 
-ReactDOM.render(<App />, appElement);
+ReactDOM.render(
+  <StateContextProvider>
+    <App />
+  </StateContextProvider>,
+  appElement
+);
