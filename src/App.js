@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import Header from './components/header/Header';
 import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
