@@ -4,8 +4,8 @@ import StateContext from './state-context';
 const StateProvider = (props) => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
-  const [inputedName, setInputedName] = useState('');
-  console.log(inputedName);
+  const [userInputedName, setUserInputedName] = useState('');
+  console.log(userInputedName);
   console.log(allRecipes);
   // const bookmarkHandler = (currentRecipe) => {
   //   let checkRecipe =
@@ -27,7 +27,7 @@ const StateProvider = (props) => {
     // bookmarks: bookmarks,
     // setBookmarks: setBookmarks,
     // toggleBookmark: bookmarkHandler,
-    inputtedRecipeName: [inputedName, setInputedName],
+    inputtedRecipeName: [userInputedName, setUserInputedName],
   };
   return (
     <StateContext.Provider value={stateContext}>

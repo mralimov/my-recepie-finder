@@ -8,7 +8,7 @@ const Form = ({ recipeName, setRecipeName }) => {
 
   const stateCtx = useContext(StateContext);
 
-  const [inputedName, setInputedName] = stateCtx.inputtedRecipeName;
+  const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
 
   const recipeInputHnadler = (e) => {
     setRecipeInput(e.target.value);
@@ -17,7 +17,7 @@ const Form = ({ recipeName, setRecipeName }) => {
   const recipeSubmitHandler = (e) => {
     e.preventDefault();
     // console.log(recipeName);
-    setInputedName(recipeInput);
+    setUserInputedName(recipeInput);
     setRecipeInput('');
   };
   return (
