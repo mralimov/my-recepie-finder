@@ -5,8 +5,18 @@ const StateProvider = (props) => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
   const [userInputedName, setUserInputedName] = useState('');
-  console.log(userInputedName);
-  console.log(allRecipes);
+  const [currentRecipeID, setCurrentRecipeID] = useState('');
+  const [currentRecipeIngredients, setCurrentRecipeIngredients] = useState({});
+  console.log(currentRecipeID);
+  // console.log(allRecipes);
+
+  const findCurrentRecipeIngredients = (recipeID) => {
+    const itemFind = allRecipes.filter((item) => item.id === recipeID);
+
+    return itemFind;
+  };
+
+  // console.log(allRecipes);
   // const bookmarkHandler = (currentRecipe) => {
   //   let checkRecipe =
   //     bookmark.filter((item) => item.id === currentRecipe).length <= 0;
@@ -23,11 +33,18 @@ const StateProvider = (props) => {
   // };
   const stateContext = {
     allRecipes: allRecipes,
-    setAllRecipes: [allRecipes, setAllRecipes],
+    currentRecipeName: userInputedName,
+    allRecipiesState: [allRecipes, setAllRecipes],
+    setCurrentRecipe: [currentRecipeID, setCurrentRecipeID],
+    currentRecipeIngredients: [
+      currentRecipeIngredients,
+      setCurrentRecipeIngredients,
+    ],
     // bookmarks: bookmarks,
     // setBookmarks: setBookmarks,
     // toggleBookmark: bookmarkHandler,
     inputtedRecipeName: [userInputedName, setUserInputedName],
+    findCurrentIngredients: findCurrentRecipeIngredients,
   };
   return (
     <StateContext.Provider value={stateContext}>

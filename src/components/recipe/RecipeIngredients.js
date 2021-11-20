@@ -9,10 +9,7 @@ const RecipeIngredients = ({ ingredients, title }) => {
           const { quantity, unit, description } = ingredient;
 
           return (
-            <li
-              key={i + Math.floor(Math.random() * 444)}
-              className='recipe__ingredient'
-            >
+            <li key={i + 444} className='recipe__ingredient'>
               {/* <svg className='recipe__icon'>
                 <use href={Icons + '#icon-check'}></use>
               </svg> */}

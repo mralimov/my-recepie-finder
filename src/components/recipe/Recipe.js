@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import useFetch from '../useFetch/UseFetch';
-import { BASE_URL, KEY } from '../config';
+import React, { useState, useEffect, useContext } from 'react';
+// import useFetch from '../useFetch/UseFetch';
+// RecipeID import { BASE_URL, KEY } from '../config';
 // import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
-import Loader from '../Loader';
+import StateContext from '../state-context/state-context';
+// import Loader from '../Loader';
 
 const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
-  const { get, loading } = useFetch(BASE_URL);
+  // const { get, loading } = useFetch(BASE_URL);
   const [recipeData, setRecipeData] = useState([]);
   const [recipeClicked, setRecipeClicked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
+  // const [bookmarked, setBookmarked] = useState(false);
+
+  const stateCtx = useContext(StateContext);
+
+  const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipe;
+  const findCurrentIngredients = stateCtx.findCurrentIngredients;
+  const allRecipes = stateCtx.allRecipes;
+  const [currentRecipeIngredients, setCurrentRecipeIngredients] =
+    stateCtx.currentRecipeIngredients;
+
+  console.log(currentRecipeIngredients);
+
+  currentRecipeIngredients.id && setRecipeClicked(true);
 
   const {
     id,
@@ -20,7 +33,7 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
     servings,
     source_url,
     title,
-  } = recipeData;
+  } = currentRecipeIngredients;
 
   // console.log(id, image_url, cooking_time, ingredients, publisher, servings);
   return (
