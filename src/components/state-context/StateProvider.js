@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StateContext from './state-context';
 
 const StateProvider = (props) => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [bookmarks, setBookmarks] = useState([]);
+  const [userInputedName, setUserInputedName] = useState('');
+  console.log(userInputedName);
+  console.log(allRecipes);
+  // const bookmarkHandler = (currentRecipe) => {
+  //   let checkRecipe =
+  //     bookmark.filter((item) => item.id === currentRecipe).length <= 0;
 
-  const bookmarkHandler = (currentRecipe) => {
-    let checkRecipe =
-      bookmark.filter((item) => item.id === currentRecipe).length <= 0;
+  //   let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
 
-    let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+  //   if (checkRecipe) {
+  //     setBookmark((prevData) => [...prevData, ...bookmarkData]);
+  //   } else {
+  //     let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
 
-    if (checkRecipe) {
-      setBookmark((prevData) => [...prevData, ...bookmarkData]);
-    } else {
-      let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
-
-      setBookmark([...filterBookmark]);
-    }
-  };
+  //     setBookmark([...filterBookmark]);
+  //   }
+  // };
   const stateContext = {
     allRecipes: allRecipes,
-    setAllRecipes: setAllRecipes,
-    bookmarks: bookmarks,
-    setBookmarks: setBookmarks,
-    toggleBookmark: bookmarkHandler,
-    inputtedRecipeName: '',
+    setAllRecipes: [allRecipes, setAllRecipes],
+    // bookmarks: bookmarks,
+    // setBookmarks: setBookmarks,
+    // toggleBookmark: bookmarkHandler,
+    inputtedRecipeName: [userInputedName, setUserInputedName],
   };
   return (
     <StateContext.Provider value={stateContext}>

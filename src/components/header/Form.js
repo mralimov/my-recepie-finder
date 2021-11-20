@@ -1,21 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 // import Icons from '../img/icons.svg';
 // import SearchIcon from '../svg-props/SearchIcon';
 import StateContext from '../state-context/state-context';
+
 const Form = ({ recipeName, setRecipeName }) => {
   const [recipeInput, setRecipeInput] = useState('');
 
   const stateCtx = useContext(StateContext);
 
-  useEffect(() => {
-    get(`/${currentRecipe}?key=${KEY}`)
-      .then((data) => {
-        // console.log(data.data.recipe);
-        const { recipe } = data.data;
-        setAllRecipes(recipe);
-      })
-      .catch((err) => console.log(err));
-  }, [currentRecipe]);
+  const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
 
   const recipeInputHnadler = (e) => {
     setRecipeInput(e.target.value);
@@ -23,8 +16,8 @@ const Form = ({ recipeName, setRecipeName }) => {
 
   const recipeSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(recipeName);
-    setRecipeName(recipeInput);
+    // console.log(recipeName);
+    setUserInputedName(recipeInput);
     setRecipeInput('');
   };
   return (

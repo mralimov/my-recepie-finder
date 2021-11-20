@@ -38,7 +38,7 @@ const SearchResult = ({
       {loading && <Loader />}
 
       <ul className='results'>
-        {recipeData.slice(start, end).map((recipe) => {
+        {/* {recipeData.slice(start, end).map((recipe) => {
           return (
             <RecipeList
               key={recipe.id + Math.floor(Math.random() * 222)}
@@ -47,7 +47,7 @@ const SearchResult = ({
               currentRecipe={currentRecipe}
             />
           );
-        })}
+        })} */}
       </ul>
 
       <PaginationButton

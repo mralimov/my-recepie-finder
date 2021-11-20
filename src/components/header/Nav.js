@@ -22,17 +22,17 @@ const Nav = ({ recipeData, bookmark }) => {
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
-              {bookmark.length == 0 && (
-                <div className='message'>
-                  <div>
-                    {/* <svg>
+              {/* {bookmark.length == 0 && ( */}
+              <div className='message'>
+                <div>
+                  {/* <svg>
                     <use href={Icons + '#icon-smile'}></use>
                   </svg> */}
-                  </div>
-                  <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
                 </div>
-              )}
-
+                <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
+              </div>
+              {/* )} */}
+              {/* 
               {bookmark &&
                 bookmark.map((recipe) => {
                   console.log(recipe);
@@ -41,7 +41,7 @@ const Nav = ({ recipeData, bookmark }) => {
                     bookmarkedRecipe={recipe}
                   />;
                   // console.log(bookmarkedData);
-                })}
+                })} */}
 
               {/* <li className="preview">
                     <a className="preview__link" href="#23456">
