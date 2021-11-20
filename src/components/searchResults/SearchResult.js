@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import useFetch from '../useFetch/UseFetch';
 import Loader from '../Loader';
 import RecipeList from './RecipeList';
 import PaginationButton from './PaginationButton';
 import { KEY, BASE_URL } from '../config';
+import StateContext from '../state-context/state-context';
 
-const SearchResult = ({
-  recipeName,
-  recipeData,
-  setRecipeData,
-  setCurrentRecipe,
-  currentRecipe,
-}) => {
+const SearchResult = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [arrayLength, setArrayLength] = useState(0);
+
+  const stateCtx = useContext(StateContext);
+
+  const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
+
+  const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
+  console.log(userInputedName);
+  // console.log(allRecipes);
 
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
@@ -22,32 +25,31 @@ const SearchResult = ({
   const { get, loading } = useFetch(BASE_URL);
 
   useEffect(() => {
-    get(`?search=${recipeName}&key=${KEY}`)
+    get(`?search=${userInputedName}&key=${KEY}`)
       .then((data) => {
         const { recipes } = data.data;
         setArrayLength(recipes.length);
-        setRecipeData(recipes);
-        console.log(recipes);
+        setAllRecipes(recipes);
+        // console.log(recipes);
       })
       .catch((err) => console.log(err));
     setCurrentPage(1);
-  }, [recipeName]);
+  }, [userInputedName]);
 
   return (
     <div className='search-results'>
       {loading && <Loader />}
 
       <ul className='results'>
-        {/* {recipeData.slice(start, end).map((recipe) => {
+        {allRecipes.slice(start, end).map((recipe, i) => {
           return (
             <RecipeList
-              key={recipe.id + Math.floor(Math.random() * 222)}
+              key={i + 222}
               recipe={recipe}
-              setCurrentRecipe={setCurrentRecipe}
-              currentRecipe={currentRecipe}
+              currentRecipeName={userInputedName}
             />
           );
-        })} */}
+        })}
       </ul>
 
       <PaginationButton
