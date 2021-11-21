@@ -10,14 +10,8 @@ const StateProvider = (props) => {
   const [currentRecipeID, setCurrentRecipeID] = useState('');
   const [currentRecipeIngredients, setCurrentRecipeIngredients] = useState({});
   const [recipeViewClicked, setRecipeViewClicked] = useState(false);
-  console.log(currentRecipeID);
+  // console.log(currentRecipeID);
   // console.log(allRecipes);
-
-  // const findCurrentRecipeIngredients = (recipeID) => {
-  //   const itemFind = allRecipes.filter((item) => item.id === recipeID);
-  //   setRecipeViewClicked(true);
-  //   return itemFind[0];
-  // };
 
   const { get, loading } = useFetch(BASE_URL);
 
