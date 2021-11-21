@@ -15,7 +15,7 @@ const SearchResult = () => {
   const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
 
   const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
-  console.log(userInputedName);
+  // console.log(userInputedName);
   // console.log(allRecipes);
 
   let start = (currentPage - 1) * 10;
