@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StateContext from './state-context';
+import { KEY, BASE_URL } from '../config';
+import useFetch from '../useFetch/UseFetch';
 
 const StateProvider = (props) => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -7,15 +9,28 @@ const StateProvider = (props) => {
   const [userInputedName, setUserInputedName] = useState('');
   const [currentRecipeID, setCurrentRecipeID] = useState('');
   const [currentRecipeIngredients, setCurrentRecipeIngredients] = useState({});
+  const [recipeViewClicked, setRecipeViewClicked] = useState(false);
   console.log(currentRecipeID);
   // console.log(allRecipes);
 
-  const findCurrentRecipeIngredients = (recipeID) => {
-    const itemFind = allRecipes.filter((item) => item.id === recipeID);
+  // const findCurrentRecipeIngredients = (recipeID) => {
+  //   const itemFind = allRecipes.filter((item) => item.id === recipeID);
+  //   setRecipeViewClicked(true);
+  //   return itemFind[0];
+  // };
 
-    return itemFind;
-  };
+  const { get, loading } = useFetch(BASE_URL);
 
+  useEffect(() => {
+    get(`/${currentRecipeID}?key=${KEY}`)
+      .then((data) => {
+        const { recipe } = data.data;
+        setCurrentRecipeIngredients(recipe);
+        setRecipeViewClicked(true);
+        // console.log(currentRecipeIngredients);
+      })
+      .catch((err) => console.log(err));
+  }, [currentRecipeID]);
   // console.log(allRecipes);
   // const bookmarkHandler = (currentRecipe) => {
   //   let checkRecipe =
@@ -35,16 +50,17 @@ const StateProvider = (props) => {
     allRecipes: allRecipes,
     currentRecipeName: userInputedName,
     allRecipiesState: [allRecipes, setAllRecipes],
-    setCurrentRecipe: [currentRecipeID, setCurrentRecipeID],
+    setCurrentRecipeID: [currentRecipeID, setCurrentRecipeID],
     currentRecipeIngredients: [
       currentRecipeIngredients,
       setCurrentRecipeIngredients,
     ],
+    recipeViewClicked: recipeViewClicked,
     // bookmarks: bookmarks,
     // setBookmarks: setBookmarks,
     // toggleBookmark: bookmarkHandler,
     inputtedRecipeName: [userInputedName, setUserInputedName],
-    findCurrentIngredients: findCurrentRecipeIngredients,
+    // findCurrentIngredients: findCurrentRecipeIngredients,
   };
   return (
     <StateContext.Provider value={stateContext}>
