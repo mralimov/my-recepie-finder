@@ -8,10 +8,10 @@ const RecipeList = ({ recipe }) => {
   const stateCtx = useContext(StateContext);
   const [currentRecipeIngredients, setCurrentRecipeIngredients] =
     stateCtx.currentRecipeIngredients;
-  const findCurrentRecipeIngredients = stateCtx.findCurrentIngredients;
+  const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipeID;
 
   const recipeClickHandler = () => {
-    setCurrentRecipeIngredients(findCurrentRecipeIngredients(id));
+    setCurrentRecipeID(id);
   };
 
   return (
