@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 // import SearchIcon from '../svg-props/SearchIcon';
 import StateContext from '../state-context/state-context';
 
-const Form = ({ recipeName, setRecipeName }) => {
+const Form = () => {
   const [recipeInput, setRecipeInput] = useState('');
 
   const stateCtx = useContext(StateContext);
