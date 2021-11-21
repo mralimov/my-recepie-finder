@@ -6,8 +6,6 @@ const RecipeList = ({ recipe }) => {
   const { image_url, publisher, title, id } = recipe;
 
   const stateCtx = useContext(StateContext);
-  const [currentRecipeIngredients, setCurrentRecipeIngredients] =
-    stateCtx.currentRecipeIngredients;
   const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipeID;
 
   const recipeClickHandler = () => {
