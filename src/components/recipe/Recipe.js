@@ -1,26 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import useFetch from '../useFetch/UseFetch';
-// RecipeID import { BASE_URL, KEY } from '../config';
+import React, { useState, useContext } from 'react';
 // import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
 import StateContext from '../state-context/state-context';
 // import Loader from '../Loader';
 
-const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
-  const [recipeData, setRecipeData] = useState([]);
-  const [recipeClicked, setRecipeClicked] = useState(false);
+const Recipe = () => {
   // const [bookmarked, setBookmarked] = useState(false);
 
   const stateCtx = useContext(StateContext);
 
-  // const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipe;
-  // const findCurrentIngredients = stateCtx.findCurrentIngredients;
-  // const allRecipes = stateCtx.allRecipes;
   const recipeViewClicked = stateCtx.recipeViewClicked;
   const [currentRecipeIngredients, setCurrentRecipeIngredients] =
     stateCtx.currentRecipeIngredients;
 
-  console.log(currentRecipeIngredients);
+  // console.log(currentRecipeIngredients);
 
   const {
     id,
@@ -33,16 +26,6 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
     title,
   } = currentRecipeIngredients;
 
-  console.log(
-    id,
-    image_url,
-    cooking_time,
-    ingredients,
-    publisher,
-    servings,
-    title,
-    source_url
-  );
   return (
     <>
       <div className='recipe'>
