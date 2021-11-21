@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import BookmarkedRecipes from './BookmarkedRecipes';
 // import Icons from '../img/icons.svg';
-const Nav = ({ recipeData, bookmark }) => {
+const Nav = () => {
   return (
     <nav className='nav'>
       <ul className='nav__list'>

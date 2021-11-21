@@ -1,28 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
-// import useFetch from '../useFetch/UseFetch';
-// RecipeID import { BASE_URL, KEY } from '../config';
+import React, { useState, useContext } from 'react';
 // import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
 import StateContext from '../state-context/state-context';
 // import Loader from '../Loader';
 
-const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
-  // const { get, loading } = useFetch(BASE_URL);
-  const [recipeData, setRecipeData] = useState([]);
-  const [recipeClicked, setRecipeClicked] = useState(false);
+const Recipe = () => {
   // const [bookmarked, setBookmarked] = useState(false);
 
   const stateCtx = useContext(StateContext);
 
-  const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipe;
-  const findCurrentIngredients = stateCtx.findCurrentIngredients;
-  const allRecipes = stateCtx.allRecipes;
+  const recipeViewClicked = stateCtx.recipeViewClicked;
   const [currentRecipeIngredients, setCurrentRecipeIngredients] =
     stateCtx.currentRecipeIngredients;
 
-  console.log(currentRecipeIngredients);
-
-  currentRecipeIngredients.id && setRecipeClicked(true);
+  // console.log(currentRecipeIngredients);
 
   const {
     id,
@@ -35,11 +26,10 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
     title,
   } = currentRecipeIngredients;
 
-  // console.log(id, image_url, cooking_time, ingredients, publisher, servings);
   return (
     <>
       <div className='recipe'>
-        {!recipeClicked && (
+        {!recipeViewClicked && (
           <div className='message'>
             <div>
               {/* <svg>
@@ -64,7 +54,7 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
             </div>
             <p>No recipes found for your query. Please try again!</p>
       </div> -->*/}
-        {recipeClicked && (
+        {recipeViewClicked && (
           <>
             <figure className='recipe__fig'>
               <img src={image_url} alt='Tomato' className='recipe__img' />
@@ -110,7 +100,7 @@ const Recipe = ({ currentRecipe, setBookmark, bookmark, recipe }) => {
                   <use href={Icons + '#icon-user'}></use>
                 </svg> */}
               </div>
-              <button className='btn--round' onClick={bookmarkHandler}>
+              <button className='btn--round'>
                 {/* <svg className=''>
                   <use href={Icons + '#icon-bookmark-fill'}></use>
                 </svg> */}
