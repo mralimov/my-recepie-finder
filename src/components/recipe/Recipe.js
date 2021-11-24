@@ -5,14 +5,11 @@ import StateContext from '../state-context/state-context';
 // import Loader from '../Loader';
 
 const Recipe = () => {
-  // const [bookmarked, setBookmarked] = useState(false);
-
   const stateCtx = useContext(StateContext);
 
   const recipeViewClicked = stateCtx.recipeViewClicked;
   const [currentRecipeIngredients, setCurrentRecipeIngredients] =
     stateCtx.currentRecipeIngredients;
-  // const [bookmar, setBookmark] = stateCtx.setBookmarks
   // const bookmakrs = stateCtx.bookmakrs
   const recipeBookmarkHandler = stateCtx.toggleBookmark;
   // console.log(currentRecipeIngredients);
