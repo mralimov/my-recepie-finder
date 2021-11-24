@@ -29,16 +29,16 @@ const StateProvider = (props) => {
 
   const recipeBookmarkHandler = (recipeID) => {
     let checkRecipe =
-      bookmark.filter((item) => item.id === currentRecipe).length <= 0;
+      bookmarks.filter((item) => item.id === recipeID).length <= 0;
 
-    let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+    let bookmarkData = allRecipes.filter((item) => item.id === recipeID);
 
     if (checkRecipe) {
-      setBookmark((prevData) => [...prevData, ...bookmarkData]);
+      setBookmarks((prevData) => [...prevData, ...bookmarkData]);
     } else {
-      let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
+      let filterBookmark = bookmarks.filter((item) => item.id !== recipeID);
 
-      setBookmark([...filterBookmark]);
+      setBookmarks([...filterBookmark]);
     }
   };
   const stateContext = {
