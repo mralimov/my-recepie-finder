@@ -26,20 +26,21 @@ const StateProvider = (props) => {
       .catch((err) => console.log(err));
   }, [currentRecipeID]);
   // console.log(allRecipes);
-  // const bookmarkHandler = (currentRecipe) => {
-  //   let checkRecipe =
-  //     bookmark.filter((item) => item.id === currentRecipe).length <= 0;
 
-  //   let bookmarkData = recipe.filter((item) => item.id === currentRecipe);
+  const recipeBookmarkHandler = (recipeID) => {
+    let checkRecipe =
+      bookmarks.filter((item) => item.id === recipeID).length <= 0;
 
-  //   if (checkRecipe) {
-  //     setBookmark((prevData) => [...prevData, ...bookmarkData]);
-  //   } else {
-  //     let filterBookmark = bookmark.filter((item) => item.id !== currentRecipe);
+    let bookmarkData = allRecipes.filter((item) => item.id === recipeID);
 
-  //     setBookmark([...filterBookmark]);
-  //   }
-  // };
+    if (checkRecipe) {
+      setBookmarks((prevData) => [...prevData, ...bookmarkData]);
+    } else {
+      let filterBookmark = bookmarks.filter((item) => item.id !== recipeID);
+
+      setBookmarks([...filterBookmark]);
+    }
+  };
   const stateContext = {
     allRecipes: allRecipes,
     currentRecipeName: userInputedName,
@@ -50,9 +51,9 @@ const StateProvider = (props) => {
       setCurrentRecipeIngredients,
     ],
     recipeViewClicked: recipeViewClicked,
-    // bookmarks: bookmarks,
-    // setBookmarks: setBookmarks,
-    // toggleBookmark: bookmarkHandler,
+    bookmarks: bookmarks,
+    setBookmarks: [bookmarks, setBookmarks],
+    toggleBookmark: recipeBookmarkHandler,
     inputtedRecipeName: [userInputedName, setUserInputedName],
     // findCurrentIngredients: findCurrentRecipeIngredients,
   };

@@ -5,14 +5,13 @@ import StateContext from '../state-context/state-context';
 // import Loader from '../Loader';
 
 const Recipe = () => {
-  // const [bookmarked, setBookmarked] = useState(false);
-
   const stateCtx = useContext(StateContext);
 
   const recipeViewClicked = stateCtx.recipeViewClicked;
   const [currentRecipeIngredients, setCurrentRecipeIngredients] =
     stateCtx.currentRecipeIngredients;
-
+  // const bookmakrs = stateCtx.bookmakrs
+  const recipeBookmarkHandler = stateCtx.toggleBookmark;
   // console.log(currentRecipeIngredients);
 
   const {
@@ -25,6 +24,10 @@ const Recipe = () => {
     source_url,
     title,
   } = currentRecipeIngredients;
+
+  const bookmarkHandler = () => {
+    recipeBookmarkHandler(id);
+  };
 
   return (
     <>
@@ -100,7 +103,7 @@ const Recipe = () => {
                   <use href={Icons + '#icon-user'}></use>
                 </svg> */}
               </div>
-              <button className='btn--round' onClick={}>
+              <button className='btn--round' onClick={bookmarkHandler}>
                 {/* <svg className=''>
                   <use href={Icons + '#icon-bookmark-fill'}></use>
                 </svg> */}

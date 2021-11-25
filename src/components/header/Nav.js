@@ -1,7 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import BookmarkedRecipes from './BookmarkedRecipes';
+import StateContext from '../state-context/state-context';
+
 // import Icons from '../img/icons.svg';
 const Nav = () => {
+  const stateCtx = useContext(StateContext);
+
+  const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+
+  console.log(bookmarks);
+
   return (
     <nav className='nav'>
       <ul className='nav__list'>
@@ -22,26 +30,26 @@ const Nav = () => {
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
-              {/* {bookmark.length == 0 && ( */}
-              <div className='message'>
-                <div>
-                  {/* <svg>
+              {bookmarks.length <= 0 && (
+                <div className='message'>
+                  <div>
+                    {/* <svg>
                     <use href={Icons + '#icon-smile'}></use>
                   </svg> */}
+                  </div>
+                  <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
                 </div>
-                <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
-              </div>
-              {/* )} */}
-              {/* 
-              {bookmark &&
-                bookmark.map((recipe) => {
+              )}
+
+              {bookmarks.length >= 0 &&
+                bookmarks.map((recipe) => {
                   console.log(recipe);
                   <BookmarkedRecipes
-                    key={recipe.id + Math.floor(Math.random() * 111)}
+                    key={recipe.id + 111}
                     bookmarkedRecipe={recipe}
                   />;
                   // console.log(bookmarkedData);
-                })} */}
+                })}
 
               {/* <li className="preview">
                     <a className="preview__link" href="#23456">

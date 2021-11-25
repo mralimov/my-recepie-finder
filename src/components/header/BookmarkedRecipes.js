@@ -2,6 +2,7 @@ import React from 'react';
 
 const BookmarkedRecipes = ({ bookmarkedRecipe }) => {
   const { image_url, title, publisher } = bookmarkedRecipe;
+
   return (
     <>
       <li className='preview'>
