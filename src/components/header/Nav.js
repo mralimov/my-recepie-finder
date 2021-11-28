@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import BookmarkedRecipes from './BookmarkedRecipes';
 import StateContext from '../state-context/state-context';
 import NoBookmarks from './NoBookmarks';
-
+import AddRecipe from './AddRecipe';
 // import Icons from '../img/icons.svg';
 const Nav = () => {
   const stateCtx = useContext(StateContext);
@@ -34,11 +34,9 @@ const Nav = () => {
               {bookmarks.length <= 0 ? <NoBookmarks /> : ''}
 
               {bookmarks.map((recipe) => {
+                <BookmarkedRecipes key={recipe.id + 111} recipe={recipe} />;
                 console.log(recipe);
-                <BookmarkedRecipes
-                  key={recipe.id + 111}
-                  bookmarkedRecipe={recipe}
-                />;
+
                 // console.log(bookmarkedData);
               })}
 
