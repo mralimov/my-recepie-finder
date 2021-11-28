@@ -4,6 +4,7 @@ import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
 import Recipe from './components/recipe/Recipe';
 import StateProvider from './components/state-context/StateProvider';
+import AddRecipe from './components/header/AddRecipe';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Header />
       <SearchResult />
       <Recipe />
+      <AddRecipe />
     </StateProvider>
   );
 };
