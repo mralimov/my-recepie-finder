@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BookmarkedRecipes = ({ bookmarkedRecipe }) => {
-  const { image_url, title, publisher } = bookmarkedRecipe;
+const BookmarkedRecipes = ({ recipe }) => {
+  const { image_url, title, publisher } = recipe;
 
   return (
     <li className='preview'>
