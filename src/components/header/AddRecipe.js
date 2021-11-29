@@ -20,43 +20,70 @@ const AddRecipe = () => {
         <form className='upload'>
           <div className='upload__column'>
             <h3 className='upload__heading'>Recipe data</h3>
-            <label>Title</label>
-            <input value='TEST23' required name='title' type='text' />
+            <label htmlFor='form-title'>Title</label>
+            <input
+              required
+              name='title'
+              type='text'
+              placeholder='title of the recipe'
+            />
             <label>URL</label>
-            <input value='TEST23' required name='sourceUrl' type='text' />
+            <input
+              required
+              name='sourceUrl'
+              type='text'
+              placeholder='www.imageURL.com'
+            />
             <label>Image URL</label>
-            <input value='TEST23' required name='image' type='text' />
+            <input
+              required
+              name='image'
+              type='text'
+              placeholder='www.imageURL.com'
+            />
             <label>Publisher</label>
-            <input value='TEST23' required name='publisher' type='text' />
+            <input
+              required
+              name='publisher'
+              type='text'
+              placeholder='publisher name'
+            />
             <label>Prep time</label>
-            <input value='23' required name='cookingTime' type='number' />
+            <input
+              required
+              name='cookingTime'
+              type='number'
+              placeholder='90 minutes'
+            />
             <label>Servings</label>
-            <input value='23' required name='servings' type='number' />
+            <input
+              required
+              name='servings'
+              type='number'
+              placeholder='6 people'
+            />
           </div>
 
           <div className='upload__column'>
             <h3 className='upload__heading'>Ingredients</h3>
             <label>Ingredient 1</label>
             <input
-              value='0.5,kg,Rice'
               type='text'
               required
               name='ingredient-1'
-              placeholder="Format: 'Quantity,Unit,Description'"
+              placeholder='Format: 0.5,kg,Quantity,Unit,Description'
             />
             <label>Ingredient 2</label>
             <input
-              value='1,,Avocado'
               type='text'
               name='ingredient-2'
-              placeholder="Format: 'Quantity,Unit,Description'"
+              placeholder="Format: '1 Onion,Quantity,Unit,Description'"
             />
             <label>Ingredient 3</label>
             <input
-              value=',,salt'
               type='text'
               name='ingredient-3'
-              placeholder="Format: 'Quantity,Unit,Description'"
+              placeholder="Format: '2 cups flower,Quantity,Unit,Description'"
             />
             <label>Ingredient 4</label>
             <input
