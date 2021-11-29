@@ -1,12 +1,14 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import BookmarkedRecipes from './BookmarkedRecipes';
 import StateContext from '../state-context/state-context';
-
+import NoBookmarks from './NoBookmarks';
+import AddRecipe from './AddRecipe';
 // import Icons from '../img/icons.svg';
 const Nav = () => {
   const stateCtx = useContext(StateContext);
 
   const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
 
   console.log(bookmarks);
 
@@ -14,7 +16,10 @@ const Nav = () => {
     <nav className='nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
-          <button className='nav__btn nav__btn--add-recipe'>
+          <button
+            className='nav__btn nav__btn--add-recipe'
+            onClick={() => setAddRecipeClicked(true)}
+          >
             {/* <svg className='nav__icon'>
               <use href={Icons + '#icon-edit'}></use>
             </svg> */}
@@ -30,26 +35,14 @@ const Nav = () => {
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
-              {bookmarks.length <= 0 && (
-                <div className='message'>
-                  <div>
-                    {/* <svg>
-                    <use href={Icons + '#icon-smile'}></use>
-                  </svg> */}
-                  </div>
-                  <p>No bookmarks yet. Find a nice recipe and bookmark it!!!</p>
-                </div>
-              )}
+              {bookmarks.length <= 0 ? <NoBookmarks /> : ''}
 
-              {bookmarks.length >= 0 &&
-                bookmarks.map((recipe) => {
-                  console.log(recipe);
-                  <BookmarkedRecipes
-                    key={recipe.id + 111}
-                    bookmarkedRecipe={recipe}
-                  />;
-                  // console.log(bookmarkedData);
-                })}
+              {bookmarks.map((recipe) => {
+                <BookmarkedRecipes key={recipe.id + 111} recipe={recipe} />;
+                console.log(recipe);
+
+                // console.log(bookmarkedData);
+              })}
 
               {/* <li className="preview">
                     <a className="preview__link" href="#23456">
