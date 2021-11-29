@@ -1,11 +1,22 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import StateContext from '../state-context/state-context';
 const AddRecipe = () => {
+  const stateCtx = useContext(StateContext);
+
+  const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
   return (
     <>
-      <div className='overlay hidden'></div>
-      <div className='add-recipe-window hidden'>
-        <button className='btn--close-modal'>&times;</button>
+      <div
+        className={`overlay ${!addRecipeClicked ? 'hidden' : ''}`}
+        onClick={() => setAddRecipeClicked(false)}
+      ></div>
+      <div className={`add-recipe-window ${!addRecipeClicked ? 'hidden' : ''}`}>
+        <button
+          className='btn--close-modal'
+          onClick={() => setAddRecipeClicked(false)}
+        >
+          &times;
+        </button>
         <form className='upload'>
           <div className='upload__column'>
             <h3 className='upload__heading'>Recipe data</h3>
