@@ -10,6 +10,7 @@ const StateProvider = (props) => {
   const [currentRecipeID, setCurrentRecipeID] = useState('');
   const [currentRecipeIngredients, setCurrentRecipeIngredients] = useState({});
   const [recipeViewClicked, setRecipeViewClicked] = useState(false);
+  const [addRecipeClicked, setAddRecipeClicked] = useState(false);
   // console.log(currentRecipeID);
   // console.log(allRecipes);
 
@@ -55,7 +56,7 @@ const StateProvider = (props) => {
     setBookmarks: [bookmarks, setBookmarks],
     toggleBookmark: recipeBookmarkHandler,
     inputtedRecipeName: [userInputedName, setUserInputedName],
-    // findCurrentIngredients: findCurrentRecipeIngredients,
+    addRecipeClicked: [addRecipeClicked, setAddRecipeClicked],
   };
   return (
     <StateContext.Provider value={stateContext}>
