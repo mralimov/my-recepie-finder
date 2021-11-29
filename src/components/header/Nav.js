@@ -8,6 +8,7 @@ const Nav = () => {
   const stateCtx = useContext(StateContext);
 
   const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
 
   console.log(bookmarks);
 
@@ -15,7 +16,10 @@ const Nav = () => {
     <nav className='nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
-          <button className='nav__btn nav__btn--add-recipe'>
+          <button
+            className='nav__btn nav__btn--add-recipe'
+            onClick={() => setAddRecipeClicked(true)}
+          >
             {/* <svg className='nav__icon'>
               <use href={Icons + '#icon-edit'}></use>
             </svg> */}
