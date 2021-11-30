@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
 import StateContext from '../state-context/state-context';
+import useForm from '../useForm/useForm';
+import formValidation from '../useForm/formValidation';
+
 const AddRecipe = () => {
   const stateCtx = useContext(StateContext);
+
+  const { handleChange, recipeForm, handleFormSubmit } = useForm();
 
   const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
   return (
@@ -17,7 +22,7 @@ const AddRecipe = () => {
         >
           &times;
         </button>
-        <form className='upload'>
+        <form className='upload' onSubmit={handleFormSubmit}>
           <div className='upload__column'>
             <h3 className='upload__heading'>Recipe data</h3>
             <label htmlFor='form-title'>Title</label>
@@ -26,20 +31,26 @@ const AddRecipe = () => {
               name='title'
               type='text'
               placeholder='title of the recipe'
+              value={recipeForm.title}
+              onChange={handleChange}
             />
             <label>URL</label>
             <input
               required
               name='sourceUrl'
               type='text'
-              placeholder='www.imageURL.com'
+              placeholder='sourceUrl'
+              value={recipeForm.sourceUrl}
+              onChange={handleChange}
             />
             <label>Image URL</label>
             <input
               required
-              name='image'
+              name='imageUrl'
               type='text'
               placeholder='www.imageURL.com'
+              value={recipeForm.imageUrl}
+              onChange={handleChange}
             />
             <label>Publisher</label>
             <input
@@ -47,6 +58,8 @@ const AddRecipe = () => {
               name='publisher'
               type='text'
               placeholder='publisher name'
+              value={recipeForm.publisher}
+              onChange={handleChange}
             />
             <label>Prep time</label>
             <input
@@ -54,6 +67,8 @@ const AddRecipe = () => {
               name='cookingTime'
               type='number'
               placeholder='90 minutes'
+              value={recipeForm.cookingTime}
+              onChange={handleChange}
             />
             <label>Servings</label>
             <input
@@ -61,6 +76,8 @@ const AddRecipe = () => {
               name='servings'
               type='number'
               placeholder='6 people'
+              value={recipeForm.servings}
+              onChange={handleChange}
             />
           </div>
 
@@ -70,38 +87,50 @@ const AddRecipe = () => {
             <input
               type='text'
               required
-              name='ingredient-1'
+              name='ingredient1'
               placeholder='Format: 0.5,kg,Quantity,Unit,Description'
+              value={recipeForm.ingredient1}
+              onChange={handleChange}
             />
             <label>Ingredient 2</label>
             <input
               type='text'
-              name='ingredient-2'
+              name='ingredient2'
               placeholder="Format: '1 Onion,Quantity,Unit,Description'"
+              value={recipeForm.ingredient2}
+              onChange={handleChange}
             />
             <label>Ingredient 3</label>
             <input
               type='text'
-              name='ingredient-3'
+              name='ingredient3'
               placeholder="Format: '2 cups flower,Quantity,Unit,Description'"
+              value={recipeForm.ingredient3}
+              onChange={handleChange}
             />
             <label>Ingredient 4</label>
             <input
               type='text'
-              name='ingredient-4'
+              name='ingredient4'
               placeholder="Format: 'Quantity,Unit,Description'"
+              value={recipeForm.ingredient4}
+              onChange={handleChange}
             />
             <label>Ingredient 5</label>
             <input
               type='text'
-              name='ingredient-5'
+              name='ingredient5'
               placeholder="Format: 'Quantity,Unit,Description'"
+              value={recipeForm.ingredient5}
+              onChange={handleChange}
             />
             <label>Ingredient 6</label>
             <input
               type='text'
-              name='ingredient-6'
+              name='ingredient6'
               placeholder="Format: 'Quantity,Unit,Description'"
+              value={recipeForm.ingredient6}
+              onChange={handleChange}
             />
           </div>
 
