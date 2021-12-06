@@ -16,6 +16,7 @@ const StateProvider = (props) => {
 
   const { get, loading } = useFetch(BASE_URL);
 
+  //fetches specific recipe ingredients
   useEffect(() => {
     get(`/${currentRecipeID}?key=${KEY}`)
       .then((data) => {
@@ -26,7 +27,7 @@ const StateProvider = (props) => {
       })
       .catch((err) => console.log(err));
   }, [currentRecipeID]);
-  // console.log(allRecipes);
+  console.log(bookmarks, allRecipes);
 
   const recipeBookmarkHandler = (recipeID) => {
     let checkRecipe =

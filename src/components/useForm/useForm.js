@@ -1,9 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import formValidation from './formValidation';
+import StateContext from '../state-context/state-context';
 
 const useForm = () => {
+  const stateCtx = useContext(StateContext);
+  const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
+
   const [error, setError] = useState([]);
-  const [addedRecipes, setAddedRecipes] = useState([]);
+
   const initialState = {
     title: '',
     sourceUrl: '',
@@ -22,9 +27,6 @@ const useForm = () => {
   const [recipeForm, setRecipeForm] = useState(initialState);
 
   const handleChange = (e) => {
-    // const { name, value } = e.taget;
-
-    console.log(e.target.name);
     setRecipeForm({
       ...recipeForm,
       [e.target.name]: e.target.value,
@@ -34,11 +36,13 @@ const useForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    setAddedRecipes((prevData) => [...prevData, recipeForm]);
     setError(formValidation(recipeForm));
+
+    setBookmarks((prevData) => [...prevData, recipeForm]);
+    // setAllRecipes((prevData) => {...prevData, ...recipeForm})
     setRecipeForm(initialState);
     console.log(recipeForm);
-    console.log(addedRecipes);
+    // setBookmarks((prevData) => [...prevData, recipeForm]);
   };
 
   return { handleChange, recipeForm, handleFormSubmit, error };
