@@ -13,7 +13,7 @@ const SearchResult = () => {
   const stateCtx = useContext(StateContext);
 
   const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
-
+  const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
   const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
   // console.log(userInputedName);
   // console.log(allRecipes);
@@ -34,7 +34,7 @@ const SearchResult = () => {
       })
       .catch((err) => console.log(err));
     setCurrentPage(1);
-  }, [userInputedName]);
+  }, [userInputedName, bookmarks]);
 
   return (
     <div className='search-results'>
