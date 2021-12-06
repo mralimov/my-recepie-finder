@@ -5,6 +5,7 @@ import StateContext from '../state-context/state-context';
 const useForm = () => {
   const stateCtx = useContext(StateContext);
   const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
 
   const [error, setError] = useState([]);
 
@@ -35,10 +36,13 @@ const useForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    setBookmarks((prevData) => [...prevData, recipeForm]);
     setError(formValidation(recipeForm));
+
+    setBookmarks((prevData) => [...prevData, recipeForm]);
+    // setAllRecipes((prevData) => {...prevData, ...recipeForm})
     setRecipeForm(initialState);
     console.log(recipeForm);
+    // setBookmarks((prevData) => [...prevData, recipeForm]);
   };
 
   return { handleChange, recipeForm, handleFormSubmit, error };
