@@ -29,7 +29,8 @@ const SearchResult = () => {
       .then((data) => {
         const { recipes } = data.data;
         setArrayLength(recipes.length);
-        setAllRecipes(recipes);
+        // setAllRecipes(recipes);
+        setAllRecipes([...bookmarks, ...recipes]);
         // console.log(recipes);
       })
       .catch((err) => console.log(err));
