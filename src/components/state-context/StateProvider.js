@@ -18,16 +18,23 @@ const StateProvider = (props) => {
 
   //fetches specific recipe ingredients
   useEffect(() => {
-    get(`/${currentRecipeID}?key=${KEY}`)
-      .then((data) => {
-        const { recipe } = data.data;
-        setCurrentRecipeIngredients(recipe);
-        setRecipeViewClicked(true);
-        // console.log(currentRecipeIngredients);
-      })
-      .catch((err) => console.log(err));
+    if (currentRecipeID != Number) {
+      console.log(currentRecipeID);
+      setCurrentRecipeIngredients(
+        allRecipes.find((recipe) => recipe === currentRecipeID)
+      );
+    } else {
+      get(`/${currentRecipeID}?key=${KEY}`)
+        .then((data) => {
+          const { recipe } = data.data;
+          setCurrentRecipeIngredients(recipe);
+          setRecipeViewClicked(true);
+          // console.log(currentRecipeIngredients);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [currentRecipeID]);
-  console.log(bookmarks, allRecipes);
+  console.log(allRecipes);
 
   const recipeBookmarkHandler = (recipeID) => {
     let checkRecipe =
