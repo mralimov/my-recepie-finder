@@ -10,6 +10,7 @@ const useForm = () => {
   const [error, setError] = useState([]);
 
   const initialState = {
+    id: '',
     title: '',
     sourceUrl: '',
     imageUrl: '',
@@ -29,8 +30,8 @@ const useForm = () => {
   const handleChange = (e) => {
     setRecipeForm({
       ...recipeForm,
+      id: `${Date.now()}`,
       [e.target.name]: e.target.value,
-      id: e.target.value,
     });
   };
 
@@ -38,7 +39,7 @@ const useForm = () => {
     e.preventDefault();
 
     setError(formValidation(recipeForm));
-    console.log(recipeForm);
+    // console.log(recipeForm);
     setBookmarks((prevData) => [...prevData, recipeForm]);
     setAllRecipes((prevData) => [recipeForm, ...prevData]);
     setRecipeForm(initialState);
