@@ -18,21 +18,23 @@ const StateProvider = (props) => {
 
   //fetches specific recipe ingredients
   useEffect(() => {
-    if (currentRecipeID != Number) {
+    if (/^\d+$/.test(currentRecipeID)) {
       console.log(currentRecipeID);
-      setCurrentRecipeIngredients(
-        allRecipes.find((recipe) => recipe === currentRecipeID)
+      const findCurrentRecipe = allRecipes.find(
+        (recipe) => recipe.id === currentRecipeID
       );
-    } else {
-      get(`/${currentRecipeID}?key=${KEY}`)
-        .then((data) => {
-          const { recipe } = data.data;
-          setCurrentRecipeIngredients(recipe);
-          setRecipeViewClicked(true);
-          // console.log(currentRecipeIngredients);
-        })
-        .catch((err) => console.log(err));
+      console.log(findCurrentRecipe);
+      setRecipeViewClicked(true);
+      return setCurrentRecipeIngredients(findCurrentRecipe);
     }
+    get(`/${currentRecipeID}?key=${KEY}`)
+      .then((data) => {
+        const { recipe } = data.data;
+        setCurrentRecipeIngredients(recipe);
+        setRecipeViewClicked(true);
+        // console.log(currentRecipeIngredients);
+      })
+      .catch((err) => console.log(err));
   }, [currentRecipeID]);
   console.log(allRecipes);
 
