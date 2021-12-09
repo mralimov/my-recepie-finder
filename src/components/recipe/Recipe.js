@@ -25,11 +25,12 @@ const Recipe = () => {
     source_url,
     title,
   } = currentRecipeIngredients;
+  console.log(currentRecipeIngredients);
 
   const bookmarkHandler = () => {
     setBookmarked(!bookmarked);
     recipeBookmarkHandler(id);
-    console.log(bookmarked);
+    // console.log(bookmarked);
   };
 
   return (

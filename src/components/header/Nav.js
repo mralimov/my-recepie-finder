@@ -9,7 +9,7 @@ const Nav = () => {
   const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
   const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
   const hasBookmark = bookmarks.length > 0;
-  console.log(bookmarks);
+  // console.log(bookmarks);
 
   return (
     <nav className='nav'>
@@ -38,7 +38,7 @@ const Nav = () => {
 
               {bookmarks.map((recipe) => {
                 <BookmarkedRecipes key={recipe.id + 111} recipe={recipe} />;
-                console.log(recipe);
+                // console.log(recipe);
 
                 // console.log(bookmarkedData);
               })}
