@@ -38,9 +38,6 @@ const Nav = () => {
 
               {bookmarks.map((recipe) => {
                 <BookmarkedRecipes key={recipe.id + 111} recipe={recipe} />;
-                // console.log(recipe);
-
-                // console.log(bookmarkedData);
               })}
 
               {/* <li className="preview">
