@@ -39,12 +39,10 @@ const useForm = () => {
     e.preventDefault();
 
     setError(formValidation(recipeForm));
-    // console.log(recipeForm);
     setBookmarks((prevData) => [...prevData, recipeForm]);
     setAllRecipes((prevData) => [recipeForm, ...prevData]);
     setRecipeForm(initialState);
     console.log(recipeForm);
-    // setBookmarks((prevData) => [...prevData, recipeForm]);
   };
 
   return { handleChange, recipeForm, handleFormSubmit, error };
