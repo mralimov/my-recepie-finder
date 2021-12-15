@@ -17,6 +17,7 @@ const useForm = () => {
     publisher: '',
     cookingTime: '',
     servings: '',
+    ingredients: [],
     ingredient1: '',
     ingredient2: '',
     ingredient3: '',
@@ -37,7 +38,22 @@ const useForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
+    const changeIngredientsToArr = Object.entries(recipeForm)
+      .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .map((ing) => {
+        const [quantity, unit, description] = ing[1]
+          .replaceAll(' ', '')
+          .split(',');
+        return { quantity: quantity ? +quantity : null, unit, description };
+      });
+    setRecipeForm((prevData) => ({
+      ...prevData,
+      ingredients: changeIngredientsToArr,
+    }));
+    // const recipeNotIngredients = recipeForm.filter((entry) =>
+    //   console.log(entry)
+    // );
+    console.log(recipeNotIngredients);
     setError(formValidation(recipeForm));
     setBookmarks((prevData) => [...prevData, recipeForm]);
     setAllRecipes((prevData) => [recipeForm, ...prevData]);
