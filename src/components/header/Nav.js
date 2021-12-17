@@ -2,15 +2,14 @@ import React, { useContext } from 'react';
 import BookmarkedRecipes from './BookmarkedRecipes';
 import StateContext from '../state-context/state-context';
 import NoBookmarks from './NoBookmarks';
-import AddRecipe from './AddRecipe';
 // import Icons from '../img/icons.svg';
 const Nav = () => {
   const stateCtx = useContext(StateContext);
 
   const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
   const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
-
-  console.log(bookmarks);
+  const hasBookmark = bookmarks.length > 0;
+  // console.log(bookmarks);
 
   return (
     <nav className='nav'>
@@ -35,13 +34,10 @@ const Nav = () => {
           </button>
           <div className='bookmarks'>
             <ul className='bookmarks__list'>
-              {bookmarks.length <= 0 ? <NoBookmarks /> : ''}
+              {hasBookmark ? <NoBookmarks /> : ''}
 
               {bookmarks.map((recipe) => {
                 <BookmarkedRecipes key={recipe.id + 111} recipe={recipe} />;
-                console.log(recipe);
-
-                // console.log(bookmarkedData);
               })}
 
               {/* <li className="preview">

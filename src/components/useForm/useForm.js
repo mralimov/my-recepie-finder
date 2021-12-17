@@ -10,6 +10,7 @@ const useForm = () => {
   const [error, setError] = useState([]);
 
   const initialState = {
+    id: '',
     title: '',
     sourceUrl: '',
     imageUrl: '',
@@ -29,6 +30,7 @@ const useForm = () => {
   const handleChange = (e) => {
     setRecipeForm({
       ...recipeForm,
+      id: `${Date.now()}`,
       [e.target.name]: e.target.value,
     });
   };
@@ -36,13 +38,27 @@ const useForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    const changeIngredientsToArr = Object.entries(recipeForm)
+      .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .map((ing) => {
+        const [quantity, unit, description] = ing[1]
+          .replaceAll(' ', '')
+          .split(',');
+        return { quantity: quantity ? +quantity : null, unit, description };
+      });
+    // setRecipeForm((prevData) => ({
+    //   ...prevData,
+    //   ingredients: changeIngredientsToArr,
+    // }));
+    // const recipeNotIngredients = recipeForm.filter((entry) =>
+    //   console.log(entry)
+    // );
+    console.log(changeIngredientsToArr);
     setError(formValidation(recipeForm));
-
     setBookmarks((prevData) => [...prevData, recipeForm]);
-    // setAllRecipes((prevData) => {...prevData, ...recipeForm})
+    setAllRecipes((prevData) => [recipeForm, ...prevData]);
     setRecipeForm(initialState);
     console.log(recipeForm);
-    // setBookmarks((prevData) => [...prevData, recipeForm]);
   };
 
   return { handleChange, recipeForm, handleFormSubmit, error };

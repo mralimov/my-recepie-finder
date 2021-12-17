@@ -15,6 +15,10 @@ const Recipe = () => {
   const recipeBookmarkHandler = stateCtx.toggleBookmark;
   // console.log(currentRecipeIngredients);
 
+  // useEffect(() => {
+  //   const storedToStorage = localStorage.setItem(JSON.stringify(bookmarked));
+  //   console.log(storedToStorage);
+  // }, []);
   const {
     id,
     image_url,
@@ -25,11 +29,12 @@ const Recipe = () => {
     source_url,
     title,
   } = currentRecipeIngredients;
+  console.log(currentRecipeIngredients);
 
   const bookmarkHandler = () => {
     setBookmarked(!bookmarked);
     recipeBookmarkHandler(id);
-    console.log(bookmarked);
+    // console.log(bookmarked);
   };
 
   return (

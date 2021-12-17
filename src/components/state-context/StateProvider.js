@@ -18,6 +18,15 @@ const StateProvider = (props) => {
 
   //fetches specific recipe ingredients
   useEffect(() => {
+    if (/^\d+$/.test(currentRecipeID)) {
+      console.log(currentRecipeID);
+      const findCurrentRecipe = allRecipes.find(
+        (recipe) => recipe.id === currentRecipeID
+      );
+      console.log(findCurrentRecipe);
+      setRecipeViewClicked(true);
+      return setCurrentRecipeIngredients(findCurrentRecipe);
+    }
     get(`/${currentRecipeID}?key=${KEY}`)
       .then((data) => {
         const { recipe } = data.data;
@@ -27,7 +36,7 @@ const StateProvider = (props) => {
       })
       .catch((err) => console.log(err));
   }, [currentRecipeID]);
-  console.log(bookmarks, allRecipes);
+  console.log(allRecipes);
 
   const recipeBookmarkHandler = (recipeID) => {
     let checkRecipe =
