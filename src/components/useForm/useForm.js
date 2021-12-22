@@ -38,14 +38,14 @@ const useForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const changeIngredientsToArr = Object.entries(recipeForm)
-      .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
-      .map((ing) => {
-        const [quantity, unit, description] = ing[1]
-          .replaceAll(' ', '')
-          .split(',');
-        return { quantity: quantity ? +quantity : null, unit, description };
-      });
+    // const changeIngredientsToArr = Object.entries(recipeForm)
+    //   .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
+    //   .map((ing) => {
+    //     const [quantity, unit, description] = ing[1]
+    //       .replaceAll(' ', '')
+    //       .split(',');
+    //     return { quantity: quantity ? +quantity : null, unit, description };
+    //   });
     // setRecipeForm((prevData) => ({
     //   ...prevData,
     //   ingredients: changeIngredientsToArr,
@@ -53,12 +53,12 @@ const useForm = () => {
     // const recipeNotIngredients = recipeForm.filter((entry) =>
     //   console.log(entry)
     // );
-    console.log(changeIngredientsToArr);
+    // console.log(changeIngredientsToArr());
     setError(formValidation(recipeForm));
     setBookmarks((prevData) => [...prevData, recipeForm]);
     setAllRecipes((prevData) => [recipeForm, ...prevData]);
     setRecipeForm(initialState);
-    console.log(recipeForm);
+    // console.log(recipeForm);
   };
 
   return { handleChange, recipeForm, handleFormSubmit, error };
