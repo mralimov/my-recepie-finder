@@ -32,7 +32,6 @@ const StateProvider = (props) => {
         const { recipe } = data.data;
         setCurrentRecipeIngredients(recipe);
         setRecipeViewClicked(true);
-        // console.log(currentRecipeIngredients);
       })
       .catch((err) => console.log(err));
   }, [currentRecipeID]);
