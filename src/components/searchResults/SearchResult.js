@@ -25,13 +25,13 @@ const SearchResult = () => {
   const { get, loading } = useFetch(BASE_URL);
 
   useEffect(() => {
+    if (!userInputedName) return;
+
     get(`?search=${userInputedName}&key=${KEY}`)
       .then((data) => {
         const { recipes } = data.data;
         setArrayLength(recipes.length);
-        // setAllRecipes(recipes);
         setAllRecipes([...bookmarks, ...recipes]);
-        // console.log(recipes);
       })
       .catch((err) => console.log(err));
     setCurrentPage(1);

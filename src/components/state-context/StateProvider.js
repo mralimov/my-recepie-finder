@@ -32,11 +32,9 @@ const StateProvider = (props) => {
         const { recipe } = data.data;
         setCurrentRecipeIngredients(recipe);
         setRecipeViewClicked(true);
-        // console.log(currentRecipeIngredients);
       })
       .catch((err) => console.log(err));
   }, [currentRecipeID]);
-  console.log(allRecipes);
 
   const recipeBookmarkHandler = (recipeID) => {
     let checkRecipe =
@@ -52,6 +50,9 @@ const StateProvider = (props) => {
       setBookmarks([...filterBookmark]);
     }
   };
+
+  console.log(bookmarks);
+
   const stateContext = {
     allRecipes: allRecipes,
     currentRecipeName: userInputedName,
