@@ -1,23 +1,42 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 // import Icons from '../img/icons.svg';
 // import SearchIcon from '../svg-props/SearchIcon';
-import StateContext from '../state-context/state-context';
+import RecipeContext from '../state-context/RecipeContext';
+import { KEY, BASE_URL } from '../config';
+import useFetch from '../useFetch/UseFetch';
 
 const Form = () => {
   const [recipeInput, setRecipeInput] = useState('');
 
-  const stateCtx = useContext(StateContext);
+  const { get, loading } = useFetch(BASE_URL);
 
-  const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
+  const stateCtx = useContext(RecipeContext);
+  const { userInputedName } = stateCtx;
 
-  const recipeInputHnadler = (e) => {
+  useEffect(() => {
+    if (!userInputedName) return;
+
+    get(`?search=${userInputedName}&key=${KEY}`)
+      .then((data) => {
+        console.log(data);
+        const { recipes } = data.data;
+        // setArrayLength(recipes.length);
+        // setAllRecipes([...bookmarks, ...recipes]);
+        console.log(recipes);
+      })
+      .catch((err) => console.log(err));
+    // setCurrentPage(1);
+  }, [userInputedName]);
+
+  const recipeInputHandler = (e) => {
     setRecipeInput(e.target.value);
   };
 
   const recipeSubmitHandler = (e) => {
     e.preventDefault();
-    // console.log(recipeName);
-    setUserInputedName(recipeInput);
+    // console.log(recipeInput);
+    stateCtx.userInputedName = recipeInput;
+    console.log(stateCtx.userInputedName);
     setRecipeInput('');
   };
   return (
@@ -27,7 +46,7 @@ const Form = () => {
         type='text'
         className='search__field'
         placeholder='Search over 1,000,000 recipes...'
-        onChange={recipeInputHnadler}
+        onChange={recipeInputHandler}
       />
       <button className='btn search__btn'>
         {/* <svg className='search__icon'>
