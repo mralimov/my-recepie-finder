@@ -4,53 +4,67 @@ import Loader from '../Loader';
 import RecipeList from './RecipeList';
 import PaginationButton from './PaginationButton';
 import { KEY, BASE_URL } from '../config';
-import StateContext from '../state-context/state-context';
+import RecipeContext from '../state-context/RecipeContext';
 
 const SearchResult = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [arrayLength, setArrayLength] = useState(0);
 
-  const stateCtx = useContext(StateContext);
+  const stateCtx = useContext(RecipeContext);
+  const { 
+    
+    
+    
+    , bookmarks, allRecipes } = stateCtx;
 
-  const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
-  const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
-  const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
+  console.log(userInputedName);
+
+  // const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
+  // const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  // const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
   // console.log(userInputedName);
   // console.log(allRecipes);
+
+  // This is temp states. Remove once Ctx ready
+  // const [userInputedName, setUserInputedName] = useState('');
+  // const [bookmarks, setBookmarks] = useState('');
+  // const [allRecipes, setAllRecipes] = useState([]);
 
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
   let maxPages = Math.ceil(arrayLength / 10);
 
   const { get, loading } = useFetch(BASE_URL);
+  // useEffect(() => {
+  //   if (!userInputedName) return;
 
-  useEffect(() => {
-    if (!userInputedName) return;
-
-    get(`?search=${userInputedName}&key=${KEY}`)
-      .then((data) => {
-        const { recipes } = data.data;
-        setArrayLength(recipes.length);
-        setAllRecipes([...bookmarks, ...recipes]);
-      })
-      .catch((err) => console.log(err));
-    setCurrentPage(1);
-  }, [userInputedName, bookmarks]);
+  //   get(`?search=${userInputedName}&key=${KEY}`)
+  //     .then((data) => {
+  //       console.log(data);
+  //       const { recipes } = data.data;
+  //       setArrayLength(recipes.length);
+  //       // setAllRecipes([...bookmarks, ...recipes]);
+  //       console.log(recipes);
+  //     })
+  //     .catch((err) => console.log(err));
+  //   setCurrentPage(1);
+  // }, [userInputedName, bookmarks]);
 
   return (
     <div className='search-results'>
       {loading && <Loader />}
 
       <ul className='results'>
-        {allRecipes.slice(start, end).map((recipe, i) => {
-          return (
-            <RecipeList
-              key={i + 222}
-              recipe={recipe}
-              currentRecipeName={userInputedName}
-            />
-          );
-        })}
+        {allRecipes &&
+          allRecipes.slice(start, end).map((recipe, i) => {
+            return (
+              <RecipeList
+                key={i + 222}
+                recipe={recipe}
+                currentRecipeName={userInputedName}
+              />
+            );
+          })}
       </ul>
 
       <PaginationButton
