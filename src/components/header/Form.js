@@ -11,7 +11,7 @@ const Form = () => {
   const { get, loading } = useFetch(BASE_URL);
 
   const stateCtx = useContext(RecipeContext);
-  const { userInputedName } = stateCtx;
+  const { userInputedName, allRecipies } = stateCtx;
 
   useEffect(() => {
     if (!userInputedName) return;
@@ -22,7 +22,9 @@ const Form = () => {
         const { recipes } = data.data;
         // setArrayLength(recipes.length);
         // setAllRecipes([...bookmarks, ...recipes]);
+
         console.log(recipes);
+        allRecipies = [...recipes];
       })
       .catch((err) => console.log(err));
     // setCurrentPage(1);
