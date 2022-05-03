@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
-import StateContext from '../state-context/state-context';
+import React, { useState, useContext } from 'react';
+import StateContext from '../state-context/RecipeContext';
 import useForm from '../useForm/useForm';
 import formValidation from '../useForm/formValidation';
 
 const AddRecipe = () => {
-  const stateCtx = useContext(StateContext);
+  // const stateCtx = useContext(StateContext);
 
   const { handleChange, recipeForm, handleFormSubmit } = useForm();
 
-  const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
+  // const [addRecipeClicked, setAddRecipeClicked] = stateCtx.addRecipeClicked;
+
+  const [addRecipeClicked, setAddRecipeClicked] = useState(false);
   return (
     <>
       <div

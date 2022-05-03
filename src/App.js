@@ -1,19 +1,19 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/header/Header';
 import './App.scss';
 import SearchResult from './components/searchResults/SearchResult';
 import Recipe from './components/recipe/Recipe';
-import StateProvider from './components/state-context/StateProvider';
 import AddRecipe from './components/header/AddRecipe';
+import RecipeProvider from './components/state-context/RecipeProvider';
 
 const App = () => {
   return (
-    <StateProvider>
+    <RecipeProvider>
       <Header />
       <SearchResult />
       <Recipe />
       <AddRecipe />
-    </StateProvider>
+    </RecipeProvider>
   );
 };
 

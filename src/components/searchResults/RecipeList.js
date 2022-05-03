@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 // import Icons from '../img/icons.svg';
-import StateContext from '../state-context/state-context';
+import StateContext from '../state-context/RecipeContext';
 
 const RecipeList = ({ recipe }) => {
   const { image_url, publisher, title, id } = recipe;
 
-  const stateCtx = useContext(StateContext);
-  const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipeID;
+  // const stateCtx = useContext(StateContext);
+  // const [currentRecipeID, setCurrentRecipeID] = stateCtx.setCurrentRecipeID;
 
   const recipeClickHandler = () => {
     setCurrentRecipeID(id);

@@ -1,24 +1,29 @@
 import React, { useState, useContext } from 'react';
 // import Icons from '../img/icons.svg';
 import RecipeIngredients from './RecipeIngredients';
-import StateContext from '../state-context/state-context';
+// import StateContext from '../state-context/RecipeContext';
 // import Loader from '../Loader';
 
 const Recipe = () => {
   const [bookmarked, setBookmarked] = useState(false);
-  const stateCtx = useContext(StateContext);
+  // const stateCtx = useContext(StateContext);
 
-  const recipeViewClicked = stateCtx.recipeViewClicked;
-  const [currentRecipeIngredients, setCurrentRecipeIngredients] =
-    stateCtx.currentRecipeIngredients;
+  // const recipeViewClicked = stateCtx.recipeViewClicked;
+  // const [currentRecipeIngredients, setCurrentRecipeIngredients] =
+  // stateCtx.currentRecipeIngredients;
   // const bookmakrs = stateCtx.bookmakrs
-  const recipeBookmarkHandler = stateCtx.toggleBookmark;
+  // const recipeBookmarkHandler = stateCtx.toggleBookmark;
   // console.log(currentRecipeIngredients);
 
   // useEffect(() => {
   //   const storedToStorage = localStorage.setItem(JSON.stringify(bookmarked));
   //   console.log(storedToStorage);
   // }, []);
+
+  // This is temp states. Remove once Ctx ready
+  const [currentRecipeIngredients, setCurrentRecipeIngredients] = useState([]);
+  const [recipeViewClicked, setRecipeViewClicked] = useState(false);
+
   const {
     id,
     image_url,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import StateContext from './state-context';
+import StateContext from './RecipeContext';
 import { KEY, BASE_URL } from '../config';
 import useFetch from '../useFetch/UseFetch';
 
