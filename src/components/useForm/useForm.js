@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
 import formValidation from './formValidation';
-import StateContext from '../state-context/state-context';
+import StateContext from '../state-context/RecipeContext';
 
 const useForm = () => {
-  const stateCtx = useContext(StateContext);
-  const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
-  const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
+  // const stateCtx = useContext(StateContext);
+  // const [bookmarks, setBookmarks] = stateCtx.setBookmarks;
+  // const [allRecipes, setAllRecipes] = stateCtx.allRecipiesState;
 
   const [error, setError] = useState([]);
 
@@ -30,7 +30,7 @@ const useForm = () => {
   const handleChange = (e) => {
     setRecipeForm({
       ...recipeForm,
-      id: `${Date.now()}`,
+      id: Date.now(),
       [e.target.name]: e.target.value,
     });
   };
