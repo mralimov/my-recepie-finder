@@ -11,11 +11,7 @@ const SearchResult = () => {
   const [arrayLength, setArrayLength] = useState(0);
 
   const stateCtx = useContext(RecipeContext);
-  const { 
-    
-    
-    
-    , bookmarks, allRecipes } = stateCtx;
+  const { userInputedName, bookmarks, allRecipes } = stateCtx;
 
   console.log(userInputedName);
 
@@ -24,11 +20,6 @@ const SearchResult = () => {
   // const [userInputedName, setUserInputedName] = stateCtx.inputtedRecipeName;
   // console.log(userInputedName);
   // console.log(allRecipes);
-
-  // This is temp states. Remove once Ctx ready
-  // const [userInputedName, setUserInputedName] = useState('');
-  // const [bookmarks, setBookmarks] = useState('');
-  // const [allRecipes, setAllRecipes] = useState([]);
 
   let start = (currentPage - 1) * 10;
   let end = currentPage * 10;
